@@ -14,6 +14,11 @@ class Proof
      */
     private $id;
 
+    /**
+     * @var \SayAndDo\PromiseBundle\Entity\Promise
+     */
+    private $promise;
+
 
     /**
      * Get id
@@ -24,11 +29,6 @@ class Proof
     {
         return $this->id;
     }
-    /**
-     * @var \SayAndDo\PromiseBundle\Entity\Promise
-     */
-    private $promise;
-
 
     /**
      * Set promise

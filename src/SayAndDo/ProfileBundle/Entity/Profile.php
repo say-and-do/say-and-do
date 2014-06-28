@@ -14,6 +14,33 @@ class Profile
      */
     private $id;
 
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $position;
+
+    /**
+     * @var string
+     */
+    private $political_party;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tasks;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -24,11 +51,6 @@ class Profile
     {
         return $this->id;
     }
-    /**
-     * @var string
-     */
-    private $title;
-
 
     /**
      * Set title
@@ -52,61 +74,6 @@ class Profile
     {
         return $this->title;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tasks;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add tasks
-     *
-     * @param \SayAndDo\TaskBundle\Entity\Task $tasks
-     * @return Profile
-     */
-    public function addTask(\SayAndDo\TaskBundle\Entity\Task $tasks)
-    {
-        $this->tasks[] = $tasks;
-
-        return $this;
-    }
-
-    /**
-     * Remove tasks
-     *
-     * @param \SayAndDo\TaskBundle\Entity\Task $tasks
-     */
-    public function removeTask(\SayAndDo\TaskBundle\Entity\Task $tasks)
-    {
-        $this->tasks->removeElement($tasks);
-    }
-
-    /**
-     * Get tasks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTasks()
-    {
-        return $this->tasks;
-    }
-    /**
-     * @var string
-     */
-    private $position;
-
-    /**
-     * @var string
-     */
-    private $political_party;
-
 
     /**
      * Set position
@@ -152,5 +119,38 @@ class Profile
     public function getPoliticalParty()
     {
         return $this->political_party;
+    }
+
+    /**
+     * Add tasks
+     *
+     * @param \SayAndDo\TaskBundle\Entity\Task $tasks
+     * @return Profile
+     */
+    public function addTask(\SayAndDo\TaskBundle\Entity\Task $tasks)
+    {
+        $this->tasks[] = $tasks;
+
+        return $this;
+    }
+
+    /**
+     * Remove tasks
+     *
+     * @param \SayAndDo\TaskBundle\Entity\Task $tasks
+     */
+    public function removeTask(\SayAndDo\TaskBundle\Entity\Task $tasks)
+    {
+        $this->tasks->removeElement($tasks);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 }

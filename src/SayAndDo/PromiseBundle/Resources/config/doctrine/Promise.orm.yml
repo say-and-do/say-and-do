@@ -10,10 +10,9 @@ SayAndDo\PromiseBundle\Entity\Promise:
     oneToOne:
         task:
           targetEntity: SayAndDo\TaskBundle\Entity\Task
-          inversedBy: task
+          inversedBy: promise
     oneToMany:
         proofs:
             targetEntity: SayAndDo\ProofBundle\Entity\Proof
             mappedBy: promise
-            cascade: ["persist", "merge"]
     lifecycleCallbacks: {  }

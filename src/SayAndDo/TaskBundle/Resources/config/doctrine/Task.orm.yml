@@ -23,5 +23,5 @@ SayAndDo\TaskBundle\Entity\Task:
     oneToOne:
         promise:
             targetEntity: SayAndDo\PromiseBundle\Entity\Promise
-            mappedBy: promise
+            mappedBy: task
     lifecycleCallbacks: {  }
