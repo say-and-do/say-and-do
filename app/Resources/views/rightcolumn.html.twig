@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+    <section class="section1">
+        <div class="container clearfix">
+            {% block inner_content %}{% endblock %}
+            <div id="sidebar" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                {% block sidebar %}{% endblock %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
