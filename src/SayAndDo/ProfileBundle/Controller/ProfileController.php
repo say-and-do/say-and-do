@@ -2,7 +2,6 @@
 
 namespace SayAndDo\ProfileBundle\Controller;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use SayAndDo\ProfileBundle\Service\ProfileService;
 use SayAndDo\TaskBundle\Entity\Task;
@@ -12,6 +11,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ProfileController extends Controller
 {
+    public function indexAction()
+    {
+        /** @var EntityRepository $repo */
+        $repo = $this->get('doctrine.orm.default_entity_manager')->getRepository('SayAndDoProfileBundle:Profile');
+
+        return $this->render(
+            'SayAndDoProfileBundle:Profile:index.html.twig',
+            array(
+                'profiles' => $repo->findBy(
+                    [],
+                    ['points' => 'DESC']
+                )
+            )
+        );
+    }
+
     /**
      * @ParamConverter("profile", class="SayAndDoProfileBundle:Profile")
      */
