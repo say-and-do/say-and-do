@@ -11,9 +11,6 @@
 
 {% block inner_content %}
 
-    {{ form_start(form, {'attr':{'class': 'form-horizontal'} }) }}
-
-    {{ form_errors(form) }}
     <section class="section1">
         <div class="container clearfix">
             <div class="content pull-right col-lg-8 col-md-8 col-sm-8 col-xs-12 clearfix">
@@ -39,37 +36,38 @@
                     </div>
                     <!-- end carousel -->
                 </article>
-
                 <hr>
-
             </div>
 
             <!-- BEGIN SIDEBAR -->
+
             <div id="sidebar" class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-top: 25px;">
 
                 <div class="widget text-center">
                     <h4 class="title">
                         <span>Pažadas</span>
                     </h4>
+                    {{ form_start(form, {'attr':{'class': 'form-horizontal'} }) }}
+                        {{ form_errors(form) }}
+                            {{ form_widget(form.title, {'attr': {'class': 'required fr_input_txt fr_97_5pro popupInput form-control', 'placeholder': 'Politikas'} }) }}
+                            {{ form_errors(form.title) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'required fr_input_txt fr_97_5pro partial_address form-control', 'placeholder': 'Pažado aprašymas'} }) }}
+                            {{ form_errors(form.description) }}
+                            <input type="hidden" name="result" id="result-shadow">
+                            <div class="pull-right">
+                                <input type="submit" value="Išsaugoti" id="submit" class="button">
+                            </div>
+                        {{ form_widget(form._token) }}
+                    {{ form_end(form) }}
 
-                    <form id="subscribe" action="mc.php" name="subscribe" method="post">
-                        {{ form_widget(form.title, {'attr': {'class': 'required fr_input_txt fr_97_5pro popupInput form-control', 'placeholder': 'Politikas'} }) }}
-                        {{ form_errors(form.title) }}
-                        {{ form_widget(form.description, {'attr': {'class': 'required fr_input_txt fr_97_5pro partial_address form-control', 'placeholder': 'Pažado aprašymas'} }) }}
-                        {{ form_errors(form.description) }}
-                        <input type="hidden" name="result" id="result-shadow">
-                        <div class="pull-right">
-                            <input type="submit" value="Išsaugoti" id="submit" class="button">
-                        </div>
-                    </form>
                 </div>
 
             </div>
-            <!-- end sidebar -->
+
+
         </div>
         <!-- end container -->
     </section><!-- end section -->
-    {{ form_end(form) }}
 
     <div id="result" style="width: 400px;">
     </div>
@@ -80,7 +78,15 @@
 
     <script type="application/javascript">
         var $j = jQuery.noConflict();
+
         $j(document).ready(function () {
+
+//            $j.gritter.add({
+//                // (string | mandatory) the heading of the notification
+//                title: 'Ačiū! Bet jūs galite padėti dar labiau.',
+//                // (string | mandatory) the text inside the notification
+//                text: 'Pažymėkite pažadą su pele ir spauskite išsaugoti.'
+//            });
 
             $j("#get-promise").on("click", function (event) {
                 $j.ajax({
