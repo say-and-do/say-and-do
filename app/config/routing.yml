@@ -17,3 +17,8 @@ say_and_do_profile:
 say_and_do_analyzis:
     resource: "@SayAndDoAnalyzisBundle/Resources/config/routing.yml"
     prefix:   /
+    
+say_and_do_admin:
+    resource: "@SayAndDoAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+

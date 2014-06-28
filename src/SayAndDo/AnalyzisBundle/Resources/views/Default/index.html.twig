@@ -1,11 +1,60 @@
-{% extends '::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <code>
-                {{ index|json_encode }}
-            </code>
+            <table class="table table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Documents</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ index }}</td>
+                    <td>{{ documents | length }}</td>
+                </tr>
+                </tbody>
+                </table>
+            <table class="table table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Title</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for document in documents %}
+                    <tr>
+                        <td>{{ document.id }}</td>
+                        <td>{{ document.url }}</td>
+                        <td>{{ document.title }}</td>
+                        <td>
+                            <a class="btn btn-xs btn-primary" href="{{ path("say_and_do_analyzis_homepage.view", {'id' : document.id}) }}">[view]</a>
+                            <a class="btn btn-xs btn-danger" href="{{ path("say_and_do_analyzis_homepage.remove", {'id' : document.id}) }}">[rm]</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form role="form" action="{{ path("say_and_do_analyzis_homepage.add") }}" method="post">
+                <div class="form-group">
+                    <textarea class="form-control" name="content" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="url" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="title" class="form-control"/>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add document</button>
+            </form>
         </div>
     </div>
 {% endblock %}

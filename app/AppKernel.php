@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new SayAndDo\TaskBundle\SayAndDoTaskBundle(),
             new SayAndDo\AnalyzisBundle\SayAndDoAnalyzisBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new SayAndDo\AdminBundle\SayAndDoAdminBundle(),
             new SayAndDo\ProofBundle\SayAndDoProofBundle(),
             new SayAndDo\PromiseBundle\SayAndDoPromiseBundle(),
         );
