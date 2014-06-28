@@ -28,15 +28,6 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($task)
             ->add('title', 'text')
             ->add('description', 'textarea')
-//            ->add(
-//                'link',
-//                'entity',
-//                array(
-//                    'class' => 'SayAndDoPromiseBundle:Promise',
-//                    'property' => 'url'
-//                )
-//            )
-//            ->add('submit', 'submit', array('label' => 'Submit'))
             ->getForm();
 
         $form->handleRequest($request);
