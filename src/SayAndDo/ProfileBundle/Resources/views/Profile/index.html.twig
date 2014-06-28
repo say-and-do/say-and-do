@@ -11,6 +11,9 @@
 {% block inner_content %}
     <div id="bbpress-forums">
             {% for profile in profiles %}
+                {% if loop.index > 0 %}
+                    <br>
+                {% endif %}
                 <div class="author_box clearfix">
                     <div class="col-lg-10 first">
                         <a href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}"><img class="img-circle alignleft" width="100" src="{{ asset('demos/team_02.png') }}" alt=""></a>
