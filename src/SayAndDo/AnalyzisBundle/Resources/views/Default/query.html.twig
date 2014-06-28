@@ -5,9 +5,9 @@
         <div class="col-md-offset-3 col-md-6">
             <form role="form" action="{{ path("say_and_do_analyzis_homepage.query") }}" method="post">
                 <div class="form-group">
-                    <textarea class="form-control" name="query" cols="30" rows="5">{{ query }}</textarea>
+                    <input type="text" class="form-control" name="query" value="{{ query }}"/>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Lookup</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Ieškom</button>
             </form>
         </div>
     </div>
@@ -36,6 +36,19 @@
                 {% endfor %}
                 </tbody>
             </table>
+            {% if hits is not empty %}
+            <h4>Dažniausi žodžiai</h4>
+            <table class="table table-condensed table-hover">
+                <tbody>
+                {% for term in hits.facets.terms.terms %}
+                    <tr>
+                        <td>{{ term.count }}</td>
+                        <td>{{ term.term }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -19,7 +19,18 @@ class DefaultController extends Controller
 
         $message = 'Index already exists';
         if (!$index->exists()) {
-            $index->create();
+            $data = [
+                'analysis' => [
+                    'analyzer' => [
+                        'my_analyzer' => [
+                            'type'     => 'snowball',
+                            'language' => 'english'
+                        ]
+                    ]
+                ]
+            ];
+
+            $index->create($data);
             $message = 'Index created';
         }
 
@@ -83,8 +94,6 @@ class DefaultController extends Controller
 
         $query = $request->isMethod('POST') ? $request->get('query') : '';
         $hits  = $request->isMethod('POST') ? $threshold->getCandidates($query) : null;
-
-        var_dump($hits->getFacets()['terms']);
 
         return $this->render(
             'SayAndDoAnalyzisBundle:Default:query.html.twig',
