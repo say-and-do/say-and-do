@@ -6,3 +6,6 @@ say_and_do_profile:
     resource: "@SayAndDoProfileBundle/Resources/config/routing.yml"
     prefix:   /
 
+say_and_do_analyzis:
+    resource: "@SayAndDoAnalyzisBundle/Resources/config/routing.yml"
+    prefix:   /

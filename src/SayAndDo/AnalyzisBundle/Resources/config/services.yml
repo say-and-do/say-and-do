@@ -1,0 +1,7 @@
+parameters:
+#    say_and_do_analyzis.example.class: SayAndDo\AnalyzisBundle\Example
+
+services:
+#    say_and_do_analyzis.example:
+#        class: %say_and_do_analyzis.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
