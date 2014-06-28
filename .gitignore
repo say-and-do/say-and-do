@@ -13,3 +13,4 @@
 /composer.phar
 /.idea/*
 /.vagrant/*
+/puphpet/files/dot/ssh/*
