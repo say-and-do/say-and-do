@@ -14,6 +14,28 @@ class Promise
      */
     private $id;
 
+    /**
+     * @var string
+     */
+    private $url;
+
+    /**
+     * @var \SayAndDo\TaskBundle\Entity\Task
+     */
+    private $task;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $proofs;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->proofs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -24,11 +46,6 @@ class Promise
     {
         return $this->id;
     }
-    /**
-     * @var \SayAndDo\TaskBundle\Entity\Task
-     */
-    private $task;
-
 
     /**
      * Set task
@@ -51,18 +68,6 @@ class Promise
     public function getTask()
     {
         return $this->task;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $proofs;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->proofs = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -96,5 +101,28 @@ class Promise
     public function getProofs()
     {
         return $this->proofs;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Promise
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

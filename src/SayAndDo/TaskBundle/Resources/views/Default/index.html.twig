@@ -1,1 +1,46 @@
-Hello {{ name }}!
+{{ form_start(form, {'attr':{'class': 'form-horizontal'} }) }}
+            {{ form_errors(form) }}
+
+            {#<form id="" action="assets/img/joker.png" enctype="multipart/form-data" class="form-inline">#}
+
+<div class="form-group">
+    <div class="col-xs-12">
+        {{ form_widget(form.title, {'attr': {'class': 'required fr_input_txt fr_97_5pro popupInput form-control', 'placeholder': 'Politikas'} }) }}
+        {{ form_errors(form.title) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-xs-12">
+        {{ form_widget(form.description, {'attr': {'class': 'required fr_input_txt fr_97_5pro partial_address form-control', 'placeholder': 'Pažado aprašymas'} }) }}
+        {{ form_errors(form.description) }}
+    </div>
+</div>
+
+
+{{ form_end(form) }}
+
+<div id="result"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="application/javascript">
+    $( document ).ready(function() {
+        $("#get-promise").on("click", function (event) {
+            $.ajax({
+                url: "/task/success/",
+                data: {
+                },
+                success: function (result) {
+                    $("#result").html("<strong>" + result + "</strong>");
+                }
+            });
+        });
+    });
+
+
+//    $("#get-promise").click(function(){
+//        $("#result").load("/task/success/");
+//    });
+</script>
+<input type="text" placeholder="Pažado nuoroda" class="required " required="required" name="form[url]" id="form_url">
+<button id="get-promise">Atidaryti</button>

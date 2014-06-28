@@ -1,3 +1,7 @@
 say_and_do_task_homepage:
-    path:     /hello/{name}
+    path:     /add_task/
     defaults: { _controller: SayAndDoTaskBundle:Default:index }
+
+say_and_do_task_success:
+    path:     /success/
+    defaults: { _controller: SayAndDoTaskBundle:Default:success }
