@@ -51,6 +51,7 @@
     </div><!-- end container -->
 </div><!-- end topbar -->
 
+{% block top_menu %}
 <header class="header">
     <div class="container">
         <div class="site-header clearfix">
@@ -74,8 +75,9 @@
         </div><!-- site header -->
     </div><!-- end container -->
 </header><!-- end header -->
+{% endblock %}
 
-
+{% block bottom_menu %}
 <section class="post-wrapper-top">
     <div class="container">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -99,6 +101,7 @@
         </div>
     </div>
 </section><!-- end post-wrapper-top -->
+{% endblock %}
 
 {% block content %}{% endblock %}
 
