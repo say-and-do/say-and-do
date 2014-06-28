@@ -23,13 +23,21 @@
                     <h4 class="title">
                         <span>Pažado įrodymas</span>
                     </h4>
+
                     <div class="container clearfix">
-                        <input name="promise" id="promise" class="form-control" placeholder="Internetinis adresas" type="text">
-                        <a id="get-promise" class="btn btn-info btn-sm pull-right">Atidaryti</a>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <a id="get-promise" class="btn btn-info">Atidaryti</a>
+                            </span>
+                            <input name="promise" id="promise" class="form-control" placeholder="Internetinis adresas" type="text">
+                        </div>
+                        <!-- /input-group -->
                     </div>
-                    <div id="result" style="width: 100%; height: 260px; background-color: #D0D0D0; text-align: left; padding: 5px;">
-                        Įveskite internetinį adresą
-                    </div><!-- end carousel -->
+                    <br>
+                    <div id="result" class="col-lg-12">
+
+                    </div>
+                    <!-- end carousel -->
                 </article>
 
                 <hr>
@@ -43,19 +51,23 @@
                     <h4 class="title">
                         <span>Pažadas</span>
                     </h4>
+
                     <form id="subscribe" action="mc.php" name="subscribe" method="post">
                         {{ form_widget(form.title, {'attr': {'class': 'required fr_input_txt fr_97_5pro popupInput form-control', 'placeholder': 'Politikas'} }) }}
                         {{ form_errors(form.title) }}
                         {{ form_widget(form.description, {'attr': {'class': 'required fr_input_txt fr_97_5pro partial_address form-control', 'placeholder': 'Pažado aprašymas'} }) }}
                         {{ form_errors(form.description) }}
+                        <input type="hidden" name="result" id="result-shadow">
                         <div class="pull-right">
                             <input type="submit" value="Išsaugoti" id="submit" class="button">
                         </div>
                     </form>
                 </div>
 
-            </div><!-- end sidebar -->
-        </div><!-- end container -->
+            </div>
+            <!-- end sidebar -->
+        </div>
+        <!-- end container -->
     </section><!-- end section -->
     {{ form_end(form) }}
 
@@ -67,24 +79,25 @@
     <link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
 
     <script type="application/javascript">
-    var $j = jQuery.noConflict();
-    $j( document ).ready(function() {
+        var $j = jQuery.noConflict();
+        $j(document).ready(function () {
 
-        $j("#get-promise").on("click", function (event) {
-            $j.ajax({
-                url: "/task/extract/",
-                type: "POST",
-                data: {
-                },
-                success: function (result) {
-                    $j("#result").html("<strong>" + result + "</strong>")
-                        .annotator()
-                        .annotator('addPlugin', 'Tags');
-                }
+            $j("#get-promise").on("click", function (event) {
+                $j.ajax({
+                    url:     "/task/extract/",
+                    type:    "POST",
+                    data:    {
+                    },
+                    success: function (result) {
+                        $j("#result").html(result)
+                            .annotator()
+                            .annotator('addPlugin', 'Tags');
+                        $j("#result-shadow").val(result);
+                    }
+                });
             });
         });
-    });
 
     </script>
 
-{% endblock  %}
+{% endblock %}
