@@ -64,4 +64,9 @@ class ProfileService
 
         return $tasks;
     }
+
+    public function getRating(Profile $profile)
+    {
+        return $profile->getPoints();
+    }
 }
