@@ -5,6 +5,11 @@ namespace SayAndDo\TaskBundle\Service;
 
 
 use Doctrine\ORM\EntityManager;
+use SayAndDo\TaskBundle\DependencyInjection\TaskPoints;
+use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
+use SayAndDo\TaskBundle\Entity\Task;
+use SayAndDo\TaskBundle\Exception\TaskAlreadyCompletedException;
+use SayAndDo\TaskBundle\Exception\TaskAlreadyInProgressException;
 
 class TaskService {
 
@@ -26,4 +31,39 @@ class TaskService {
         $this->em->flush();
     }
 
+    public function confirmTask(Task $task)
+    {
+        $task->setStatus(TaskStatus::STATUS_CONFIRMED);
+        $this->store($task);
+    }
+
+    public function startTask(Task $task)
+    {
+        if ($task->getStatus() == TaskStatus::STATUS_IN_PROGRESS) {
+            throw new TaskAlreadyInProgressException();
+        }
+
+        $task->setStatus(TaskStatus::STATUS_IN_PROGRESS);
+        $this->store($task);
+
+        if ($task->getProfile()) {
+            $task->getProfile()->setPoints($task->getProfile()->getPoints() + TaskPoints::FOR_NEW_TASK);
+            $this->saveEntity($task->getProfile());
+        }
+    }
+
+    public function completeTask(Task $task)
+    {
+        if ($task->getStatus() == TaskStatus::STATUS_DONE) {
+            throw new TaskAlreadyCompletedException();
+        }
+
+        $task->setStatus(TaskStatus::STATUS_DONE);
+        $this->store($task);
+
+        if ($task->getProfile()) {
+            $task->getProfile()->setPoints($task->getProfile()->getPoints() + TaskPoints::FOR_FINISHED_TASK);
+            $this->saveEntity($task->getProfile());
+        }
+    }
 } 
