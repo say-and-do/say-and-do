@@ -20,6 +20,6 @@ SayAndDo\ProfileBundle\Entity\Profile:
     oneToMany:
         tasks:
             targetEntity: SayAndDo\TaskBundle\Entity\Task
-            mappedBy: profile
+            mappedBy: tasks
             cascade: ["persist", "merge"]
     lifecycleCallbacks: {  }
