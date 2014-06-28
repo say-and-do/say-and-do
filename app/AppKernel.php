@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new SayAndDo\TaskBundle\SayAndDoTaskBundle(),
             new SayAndDo\AnalyzisBundle\SayAndDoAnalyzisBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new SayAndDo\AdminBundle\SayAndDoAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
