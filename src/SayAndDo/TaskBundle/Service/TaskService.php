@@ -61,7 +61,9 @@ class TaskService {
         $task->setStatus(TaskStatus::STATUS_DONE);
         $this->store($task);
 
-        $task->getProfile()->setPoints($task->getProfile()->getPoints() + TaskPoints::FOR_FINISHED_TASK);
-        $this->saveEntity($task->getProfile());
+        if ($task->getProfile()) {
+            $task->getProfile()->setPoints($task->getProfile()->getPoints() + TaskPoints::FOR_FINISHED_TASK);
+            $this->saveEntity($task->getProfile());
+        }
     }
 } 
