@@ -1,5 +1,7 @@
 {% extends '::fullwidth.html.twig' %}
 
+{% set total_tasks = (tasks_confirmed|length + tasks_in_progress|length + tasks_done|length) %}
+
 {% block breadcrumb %}
     <li>Profilio apžvalga</li>
     <li><a href="{{ path('say_and_do_profile_details', {'id':profile.getId()}) }}">{{ profile.getTitle() }}</a></li>
@@ -28,17 +30,17 @@
     </div>
     <div class="skills text-center">
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <span class="chart" data-percent="90">
+            <span class="chart" data-percent="{{ ((tasks_confirmed|length / total_tasks) * 100) }}">
                 <span class="percent">{{ tasks_confirmed|length }}</span>
             </span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <span class="chart" data-percent="90">
+            <span class="chart" data-percent="{{ ((tasks_in_progress|length / total_tasks) * 100) }}">
                 <span class="percent">{{ tasks_in_progress|length }}</span>
             </span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <span class="chart" data-percent="90">
+            <span class="chart" data-percent="{{ ((tasks_done|length / total_tasks) * 100) }}">
                 <span class="percent">{{ tasks_done|length }}</span>
             </span>
         </div>
@@ -46,30 +48,30 @@
     <div>
         <div class="col-lg-4 col-md-4 col-sm-4 first">
             <div class="widget">
-                <h3 class="title">Darbai</h3>
+                <h2 class="title">Darbai</h2>
                 <ul class="check">
                     {% for task_confirmed in tasks_confirmed %}
-                        <li>{{ task_confirmed.getTitle() }}</li>
+                        <li style="font-size: 18px;">{{ task_confirmed.getTitle() }}</li>
                     {% endfor %}
                 </ul>
             </div><!-- end widget -->
         </div><!-- large-6 -->
         <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="widget">
-                <h3 class="title">Vykdoma</h3>
+                <h2 class="title">Vykdoma</h2>
                 <ul class="check">
                     {% for task_in_progress in tasks_in_progress %}
-                        <li>{{ task_in_progress.getTitle() }}</li>
+                        <li style="font-size: 18px;">{{ task_in_progress.getTitle() }}</li>
                     {% endfor %}
                 </ul>
             </div><!-- end widget -->
         </div><!-- large-6 -->
         <div class="col-lg-4 col-md-4 col-sm-4 last">
             <div class="widget">
-                <h3 class="title">Atlikta</h3>
+                <h2 class="title">Atlikta</h2>
                 <ul class="check">
                     {% for task_done in tasks_done %}
-                        <li>{{ task_done.getTitle() }}</li>
+                        <li style="font-size: 18px;">{{ task_done.getTitle() }}</li>
                     {% endfor %}
                 </ul>
             </div><!-- end widget -->
