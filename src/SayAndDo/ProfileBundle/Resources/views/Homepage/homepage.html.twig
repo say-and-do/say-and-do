@@ -40,7 +40,7 @@
                     </div>
                     <!-- he wrap -->
                     <div class="teammembers-meta">
-                        <h4>{{ profile.profile.title }}</h4>
+                        <h4><a href="{{ path('say_and_do_profile_details', {'id': profile.profile.id }) }}">{{ profile.profile.title }}</h4></h4>
                     </div>
                     <small>{{ profile.profile.position }}</small>
                     <div class="teamskills">
