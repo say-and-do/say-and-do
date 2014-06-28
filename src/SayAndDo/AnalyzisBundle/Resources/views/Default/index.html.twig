@@ -1,1 +1,11 @@
 {% extends '::base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <code>
+                {{ index|json_encode }}
+            </code>
+        </div>
+    </div>
+{% endblock %}
