@@ -1,3 +1,7 @@
+say_and_do_profile_homepage:
+    path: /
+    defaults: { _controller: SayAndDoProfileBundle:Homepage:homepage }
+
 say_and_do_profile_profiles:
     path:     /profiles
     defaults: { _controller: SayAndDoProfileBundle:Profile:index }
