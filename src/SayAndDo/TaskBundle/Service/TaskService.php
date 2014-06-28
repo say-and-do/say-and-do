@@ -5,6 +5,7 @@ namespace SayAndDo\TaskBundle\Service;
 
 
 use Doctrine\ORM\EntityManager;
+use SayAndDo\TaskBundle\DependencyInjection\TaskPoints;
 use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
 use SayAndDo\TaskBundle\Entity\Task;
 
@@ -44,5 +45,8 @@ class TaskService {
     {
         $task->setStatus(TaskStatus::STATUS_DONE);
         $this->store($task);
+
+        $task->getProfile()->setPoints($task->getProfile()->getPoints() + TaskPoints::FOR_FINISHED_TASK);
+        $this->saveEntity($task->getProfile());
     }
 } 
