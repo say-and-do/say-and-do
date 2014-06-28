@@ -6,22 +6,9 @@
             <table class="table table-condensed table-hover">
                 <thead>
                 <tr>
-                    <th>Index</th>
-                    <th>Documents</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{{ index }}</td>
-                    <td>{{ documents | length }}</td>
-                </tr>
-                </tbody>
-                </table>
-            <table class="table table-condensed table-hover">
-                <thead>
-                <tr>
-                    <th>Source</th>
-                    <th>Title</th>
+                    <th>#</th>
+                    <th>URL</th>
+                    <th>Antraštė</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -45,15 +32,18 @@
         <div class="col-md-offset-3 col-md-6">
             <form role="form" action="{{ path("say_and_do_analyzis_homepage.add") }}" method="post">
                 <div class="form-group">
-                    <textarea class="form-control" name="content" cols="30" rows="10"></textarea>
-                </div>
-                <div class="form-group">
+                    <label>URL</label>
                     <input type="text" name="url" class="form-control"/>
                 </div>
                 <div class="form-group">
+                    <label>Antraštė</label>
                     <input type="text" name="title" class="form-control"/>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Add document</button>
+                <div class="form-group">
+                    <label>Turinys</label>
+                    <textarea class="form-control" name="content" cols="30" rows="10"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Pridėti dokumentą</button>
             </form>
         </div>
     </div>

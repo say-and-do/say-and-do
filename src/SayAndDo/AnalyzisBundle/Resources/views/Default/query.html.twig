@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form role="form" action="{{ path("say_and_do_analyzis_homepage.query") }}" method="post">
+                <div class="form-group">
+                    <textarea class="form-control" name="query" cols="30" rows="5">{{ query }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Lookup</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th>Score</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for hit in hits %}
+                    <tr>
+                        <td>{% if hit.score is not empty %}{{ hit.score }}{% else %}n\a{% endif %}</td>
+                        <td>{{ hit.id }}</td>
+                        <td>{{ hit.title }}</td>
+                        <td>
+                            <a class="btn btn-xs btn-primary"
+                               href="{{ path("say_and_do_analyzis_homepage.view", {'id' : hit.id}) }}">[view]</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
