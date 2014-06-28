@@ -97,4 +97,60 @@ class Profile
     {
         return $this->tasks;
     }
+    /**
+     * @var string
+     */
+    private $position;
+
+    /**
+     * @var string
+     */
+    private $political_party;
+
+
+    /**
+     * Set position
+     *
+     * @param string $position
+     * @return Profile
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set political_party
+     *
+     * @param string $politicalParty
+     * @return Profile
+     */
+    public function setPoliticalParty($politicalParty)
+    {
+        $this->political_party = $politicalParty;
+
+        return $this;
+    }
+
+    /**
+     * Get political_party
+     *
+     * @return string 
+     */
+    public function getPoliticalParty()
+    {
+        return $this->political_party;
+    }
 }
