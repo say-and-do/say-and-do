@@ -1,0 +1,3 @@
+say_and_do_analyzis_homepage:
+    path:     /es/
+    defaults: { _controller: SayAndDoAnalyzisBundle:Default:index }

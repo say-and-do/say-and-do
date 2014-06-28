@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new SayAndDo\ProfileBundle\SayAndDoProfileBundle(),
             new SayAndDo\TaskBundle\SayAndDoTaskBundle(),
+            new SayAndDo\AnalyzisBundle\SayAndDoAnalyzisBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -24,6 +24,18 @@ framework:
     fragments:       ~
     http_method_override: true
 
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        articles:
+            types:
+                article:
+                    mappings:
+                        url: ~
+                        title: ~
+                        content: ~
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
