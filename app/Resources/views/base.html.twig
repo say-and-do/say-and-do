@@ -66,7 +66,7 @@
                 <div id="nav" class="right">
                     <div class="container clearfix">
                         <ul id="jetmenu" class="jetmenu blue">
-                            <li><a href="#">Pagrindinis</a></li>
+                            <li {% if app.request.get('_route') == 'say_and_do_profile_homepage' %} class="active"{% endif %}><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
                             <li{% if app.request.get('_route') == 'say_and_do_profile_profiles' or app.request.get('_route') == 'say_and_do_profile_details' %} class="active"{% endif %}><a href="{{ path('say_and_do_profile_profiles') }}">Profiliai</a></li>
                         </ul>
                     </div>
@@ -82,7 +82,7 @@
     <div class="container">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <ul class="breadcrumb">
-                <li><a href="index.html">Pradinis</a></li>
+                <li><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
                 {% block breadcrumb %}{% endblock %}
             </ul>
             <h2>{% block header_title %}{% endblock %}</h2>
