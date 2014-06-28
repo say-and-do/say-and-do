@@ -13,14 +13,26 @@
 
 {% block inner_content %}
     <div class="author_box clearfix">
-        <img class="img-circle alignleft" width="100" src="{{ asset('demos/team_02.png') }}" alt="">
-        <h4>{{ profile.getTitle() }} - {{ profile.getPosition() }} <small>{{ profile.getPoliticalParty() }}</small></h4>
-        <p>{{ profile.getDescription() }}</p>
-        <div class="social_buttons">
-            <a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-            <a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-            <a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-            <a href="single-with-sidebar.html#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+        <div class="col-lg-10 first">
+            <img class="img-circle alignleft" width="100" src="{{ asset('demos/team_02.png') }}" alt="">
+            <h4>{{ profile.getTitle() }} - {{ profile.getPosition() }} <small>{{ profile.getPoliticalParty() }}</small></h4>
+            <p>{{ profile.getDescription() }}</p>
+            <div class="social_buttons">
+                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-2 last">
+            <div class="pull-right">
+                <div class="f-element col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="milestone-counter">
+                        <span class="stat-count highlight">{{ profile_rating }}</span>
+                        <div class="milestone-details">Indeksas</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
