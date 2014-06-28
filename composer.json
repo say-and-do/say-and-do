@@ -3,6 +3,7 @@
     "require": {
         "symfony/symfony": "2.4.*",
         "elasticsearch/elasticsearch": "*",
-        "cocur/slugify": "*"
+        "cocur/slugify": "*",
+        "twbs/bootstrap": "3.*"
     }
 }
