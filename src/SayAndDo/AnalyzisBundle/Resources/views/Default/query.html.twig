@@ -1,23 +1,33 @@
 {% extends 'base.html.twig' %}
 
+{% block top_menu %}{% endblock %}
+{% block bottom_menu %}{% endblock %}
+{% block footer %}{% endblock %}
+
 {% block content %}
+    <br>
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
             <form role="form" action="{{ path("say_and_do_analyzis_homepage.query") }}" method="post">
-                <div class="form-group">
+                <div class="input-group">
                     <input type="text" class="form-control" name="query" value="{{ query }}"/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-block">Ieškom</button>
+                    </span>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Ieškom</button>
+                <!-- /input-group -->
+                <div class="form-group">
+
+                </div>
             </form>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-offset-1 col-md-10">
             <table class="table table-condensed table-hover">
                 <thead>
                 <tr>
                     <th>Score</th>
-                    <th>ID</th>
                     <th>Title</th>
                     <th></th>
                 </tr>
@@ -26,7 +36,6 @@
                 {% for hit in hits %}
                     <tr>
                         <td>{% if hit.score is not empty %}{{ hit.score }}{% else %}n\a{% endif %}</td>
-                        <td>{{ hit.id }}</td>
                         <td>{{ hit.title }}</td>
                         <td>
                             <a class="btn btn-xs btn-primary"
@@ -37,17 +46,17 @@
                 </tbody>
             </table>
             {% if hits is not empty %}
-            <h4>Dažniausi žodžiai</h4>
-            <table class="table table-condensed table-hover">
-                <tbody>
-                {% for term in hits.facets.terms.terms %}
-                    <tr>
-                        <td>{{ term.count }}</td>
-                        <td>{{ term.term }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                <h4>Dažniausi žodžiai</h4>
+                <table class="table table-condensed table-hover">
+                    <tbody>
+                    {% for term in hits.facets.terms.terms %}
+                        <tr>
+                            <td>{{ term.count }}</td>
+                            <td>{{ term.term }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             {% endif %}
         </div>
     </div>

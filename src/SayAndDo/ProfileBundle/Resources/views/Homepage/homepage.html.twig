@@ -1,5 +1,9 @@
 {% extends '::fullwidth.html.twig' %}
 
+{% block header_title %}
+    Pagrindinis
+{% endblock %}
+
 {% block inner_content %}
     <section class="section2">
         <div class="message text-center">
@@ -11,4 +15,55 @@
             <a class="dmbutton large" href="contact.html">MINIM VEDIAM</a>
         </div>
     </section>
+    <div class="content col-lg-12 col-md-12 col-sm-12 clearfix">
+        {% for profile in profiles %}
+            {% set total_tasks = (profile.tasks_confirmed|length + profile.tasks_in_progress|length + profile.tasks_done|length) %}
+            {% if total_tasks <= 0 %}
+                {% set total_tasks = 1 %}
+            {% endif %}
+
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="teammembers">
+                    <div class="he-wrap tpl2">
+                        <img src="{{ asset('profiles/profile_'~profile.profile.getId()~'.png') }}" alt="">
+
+                        <div class="he-view">
+                            <div class="bg a0" data-animate="fadeIn">
+                                <div class="center-bar">
+                                    <a href="#" class="twitter a0" data-animate="elasticInDown"></a>
+                                    <a href="#" class="facebook a1" data-animate="elasticInDown"></a>
+                                    <a href="#" class="google a2" data-animate="elasticInDown"></a>
+                                </div>
+                                <!-- center  bar -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- he wrap -->
+                    <div class="teammembers-meta">
+                        <h4><a href="{{ path('say_and_do_profile_details', {'id': profile.profile.id }) }}">{{ profile.profile.title }}</h4></h4>
+                    </div>
+                    <small>{{ profile.profile.position }}</small>
+                    <div class="teamskills">
+                        <div class="progress">
+                            <div data-effect="slide-left" class="progress-bar progress-bar-danger effect-slide-left"
+                                 style="background-color: #d9534f; width: {{ ((profile.tasks_confirmed|length / total_tasks) * 100) }}%; -webkit-transition: all 0.7s ease-in-out; transition: all 0.7s ease-in-out;">
+                                <span>Darbai</span></div>
+                        </div>
+                        <div class="progress">
+                            <div data-effect="slide-left" class="progress-bar progress-bar-danger effect-slide-left"
+                                 style="background-color: #f0ad4e; width: {{ ((profile.tasks_in_progress|length / total_tasks) * 100) }}%; -webkit-transition: all 0.7s ease-in-out; transition: all 0.7s ease-in-out;">
+                                <span>Vykdoma</span></div>
+                        </div>
+                        <div class="progress">
+                            <div data-effect="slide-left" class="progress-bar progress-bar-danger effect-slide-left"
+                                 style="background-color: #5cb85c; width: {{ ((profile.tasks_done|length / total_tasks) * 100) }}%; -webkit-transition: all 0.7s ease-in-out; transition: all 0.7s ease-in-out;">
+                                <span>Atlikta</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end teammembers -->
+            </div>
+            <!-- end col 4 -->
+        {% endfor %}
+    </div>
 {% endblock %}

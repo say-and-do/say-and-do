@@ -46,17 +46,17 @@
     </div>
     <div class="skills text-center">
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <span class="chart" data-percent="{{ ((tasks_confirmed|length / total_tasks) * 100) }}">
+            <span class="chart chart-tasks" data-percent="{{ ((tasks_confirmed|length / total_tasks) * 100) }}">
                 <span class="percent">{{ tasks_confirmed|length }}</span>
             </span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <span class="chart" data-percent="{{ ((tasks_in_progress|length / total_tasks) * 100) }}">
+            <span class="chart chart-in-progress" data-percent="{{ ((tasks_in_progress|length / total_tasks) * 100) }}">
                 <span class="percent">{{ tasks_in_progress|length }}</span>
             </span>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <span class="chart" data-percent="{{ ((tasks_done|length / total_tasks) * 100) }}">
+            <span class="chart chart-done" data-percent="{{ ((tasks_done|length / total_tasks) * 100) }}">
                 <span class="percent">{{ tasks_done|length }}</span>
             </span>
         </div>
@@ -98,14 +98,36 @@
 {% block javascripts %}
     <script>
         // Chart Effects;
-        $('.chart').easyPieChart({
+        $('.chart-tasks').easyPieChart({
             easing: 'easeOutBounce',
             size : 180,
             animate : 2000,
             lineWidth : 10,
             lineCap : 'square',
             lineWidth : 18,
-            barColor : '#3498db',
+            barColor : '#d9534f',
+            trackColor : '#f9f9f9',
+            scaleColor : false
+        });
+        $('.chart-in-progress').easyPieChart({
+            easing: 'easeOutBounce',
+            size : 180,
+            animate : 2000,
+            lineWidth : 10,
+            lineCap : 'square',
+            lineWidth : 18,
+            barColor : '#f0ad4e',
+            trackColor : '#f9f9f9',
+            scaleColor : false
+        });
+        $('.chart-done').easyPieChart({
+            easing: 'easeOutBounce',
+            size : 180,
+            animate : 2000,
+            lineWidth : 10,
+            lineCap : 'square',
+            lineWidth : 18,
+            barColor : '#5cb85c',
             trackColor : '#f9f9f9',
             scaleColor : false
         });

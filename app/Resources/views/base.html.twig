@@ -11,8 +11,7 @@
 
     {% block stylesheets %}
         <!-- Google Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Ruda:400,900,700' rel='stylesheet' type='text/css'>
-
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,900,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
         <!-- Bootstrap -->
@@ -51,6 +50,7 @@
     </div><!-- end container -->
 </div><!-- end topbar -->
 
+{% block top_menu %}
 <header class="header">
     <div class="container">
         <div class="site-header clearfix">
@@ -65,55 +65,8 @@
                 <div id="nav" class="right">
                     <div class="container clearfix">
                         <ul id="jetmenu" class="jetmenu blue">
-                            <li><a href="#">Home</a>
-                                <ul class="dropdown">
-                                    <li><a href="index.html">Home - Shop Version</a></li>
-                                    <li><a href="index2.html">Home - Agency Version</a></li>
-                                    <li><a href="index3.html">Home - Business Version</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="team-members.html">Team Members</a></li>
-                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                    <li><a href="404.html">404 Error</a></li>
-                                    <li><a href="faq.html">FAQ Page</a></li>
-                                    <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                                    <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                                    <li><a href="fullwidth.html">Full Width</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Shop</a>
-                                <ul class="dropdown">
-                                    <li><a href="digital-download.html">Products Page</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="account.html">Account Page</a></li>
-                                    <li><a href="support.html">Support Center</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Portfolio</a>
-                                <ul class="dropdown">
-                                    <li><a href="single-portfolio-1.html">Single Portfolio 1</a></li>
-                                    <li><a href="single-portfolio-2.html">Single Portfolio 2</a></li>
-                                    <li><a href="portfolio-2.html">Portfolio (2 Columns)</a></li>
-                                    <li><a href="portfolio-3.html">Portfolio (3 Columns)</a></li>
-                                    <li><a href="gallery-portfolio.html">Gallery</a></li>
-                                    <li><a href="masonry-grid-portfolio.html">Masonry Grid Style</a></li>
-                                </ul>
-                            </li>
-                            <li class="active"><a href="#">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                    <li><a href="single-with-sidebar.html">Single with Sidebar</a></li>
-                                </ul>
-                            </li>
+                            <li {% if app.request.get('_route') == 'say_and_do_profile_homepage' %} class="active"{% endif %}><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
+                            <li{% if app.request.get('_route') == 'say_and_do_profile_profiles' or app.request.get('_route') == 'say_and_do_profile_details' %} class="active"{% endif %}><a href="{{ path('say_and_do_profile_profiles') }}">Profiliai</a></li>
                         </ul>
                     </div>
                 </div><!-- nav -->
@@ -121,13 +74,14 @@
         </div><!-- site header -->
     </div><!-- end container -->
 </header><!-- end header -->
+{% endblock %}
 
-
+{% block bottom_menu %}
 <section class="post-wrapper-top">
     <div class="container">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <ul class="breadcrumb">
-                <li><a href="index.html">Pradinis</a></li>
+                <li><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
                 {% block breadcrumb %}{% endblock %}
             </ul>
             <h2>{% block header_title %}{% endblock %}</h2>
@@ -146,9 +100,11 @@
         </div>
     </div>
 </section><!-- end post-wrapper-top -->
+{% endblock %}
 
 {% block content %}{% endblock %}
 
+{% block footer %}
 <footer class="footer">
     <div class="container">
         <div class="widget col-lg-3 col-md-3 col-sm-12">
@@ -216,6 +172,7 @@
         </div><!-- end container -->
     </div><!-- end copyrights -->
 </footer><!-- end footer -->
+{% endblock %}
 <div class="dmtop">Scroll to Top</div>
 
 <!-- Main Scripts-->
