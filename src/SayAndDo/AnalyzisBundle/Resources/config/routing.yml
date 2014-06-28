@@ -2,6 +2,10 @@ say_and_do_analyzis_homepage:
     path:     /es/
     defaults: { _controller: SayAndDoAnalyzisBundle:Default:index }
 
+say_and_do_analyzis_homepage.init:
+    path:     /es/init
+    defaults: { _controller: SayAndDoAnalyzisBundle:Default:init }
+
 say_and_do_analyzis_homepage.add:
     path:     /es/add
     defaults:
@@ -9,7 +13,7 @@ say_and_do_analyzis_homepage.add:
     methods:   [POST]
 
 say_and_do_analyzis_homepage.view:
-    path:     /es/{id}
+    path:     /es/view/{id}
     defaults:
         _controller: SayAndDoAnalyzisBundle:Default:viewDocument
     methods:   [GET]
@@ -19,4 +23,10 @@ say_and_do_analyzis_homepage.remove:
     defaults:
         _controller: SayAndDoAnalyzisBundle:Default:removeDocument
     methods:   [GET]
+
+say_and_do_analyzis_homepage.query:
+    path:     /es/query
+    defaults:
+        _controller: SayAndDoAnalyzisBundle:Default:queryDocuments
+    methods:   [POST, GET]
 
