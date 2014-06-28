@@ -1,0 +1,4 @@
+say_and_do_profile:
+    resource: "@SayAndDoProfileBundle/Resources/config/routing.yml"
+    prefix:   /
+
