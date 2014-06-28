@@ -16,4 +16,8 @@ SayAndDo\TaskBundle\Entity\Task:
         status:
             type: string
             length: 16
+    manyToOne:
+        profile:
+            targetEntity: SayAndDo\ProfileBundle\Entity\Profile
+            inversedBy: tasks
     lifecycleCallbacks: {  }

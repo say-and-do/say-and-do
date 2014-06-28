@@ -108,4 +108,32 @@ class Task
     {
         return $this->status;
     }
+    /**
+     * @var \SayAndDo\ProfileBundle\Entity\Profile
+     */
+    private $profile;
+
+
+    /**
+     * Set profile
+     *
+     * @param \SayAndDo\ProfileBundle\Entity\Profile $profile
+     * @return Task
+     */
+    public function setProfile(\SayAndDo\ProfileBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \SayAndDo\ProfileBundle\Entity\Profile 
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
 }
