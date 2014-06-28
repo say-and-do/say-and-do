@@ -84,8 +84,6 @@ class DefaultController extends Controller
         $query = $request->isMethod('POST') ? $request->get('query') : '';
         $hits  = $request->isMethod('POST') ? $threshold->getCandidates($query) : null;
 
-        var_dump($hits->getFacets()['terms']);
-
         return $this->render(
             'SayAndDoAnalyzisBundle:Default:query.html.twig',
             [
