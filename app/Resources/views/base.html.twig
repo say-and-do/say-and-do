@@ -35,7 +35,7 @@
     <script src="{{ asset('assets/js/respond.min.js') }}"></script>
     <![endif]-->
 
-    <script src="js/modernizr.js"></script>
+    <script src="{{ asset('js/modernizr.js') }}"></script>
 </head>
 <div class="topbar clearfix">
     <div class="container">
@@ -161,13 +161,13 @@
             <ul class="recent_posts">
                 <li>
                     <a href="home1.html#">
-                        <img src="demos/recent_post_01.png" alt="" />Our New Dashboard Is Here
+                        <img src="{{ asset('demos/recent_post_01.png') }}" alt="" />Our New Dashboard Is Here
                     </a>
                     <a class="readmore" href="#">read more</a>
                 </li>
                 <li>
                     <a href="home1.html#">
-                        <img src="demos/recent_post_02.png" alt="" />Design Is In The Air
+                        <img src="{{ asset('demos/recent_post_02.png') }}" alt="" />Design Is In The Air
                     </a>
                     <a class="readmore" href="#">read more</a>
                 </li>
@@ -185,14 +185,14 @@
         <div class="widget col-lg-3 col-md-3 col-sm-12">
             <h4 class="title">Flickr Stream</h4>
             <ul class="flickr">
-                <li><a href="#"><img alt="" src="demos/flickr_01.jpg"></a></li>
-                <li><a href="#"><img alt="" src="demos/flickr_02.jpg"></a></li>
-                <li><a href="#"><img alt="" src="demos/flickr_03.jpg"></a></li>
-                <li><a href="#"><img alt="" src="demos/flickr_04.jpg"></a></li>
-                <li><a href="#"><img alt="" src="demos/flickr_05.jpg"></a></li>
-                <li><a href="#"><img alt="" src="demos/flickr_06.jpg"></a></li>
-                <li><a href="#"><img alt="" src="demos/flickr_07.jpg"></a></li>
-                <li><a href="#"><img alt="" src="demos/flickr_08.jpg"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_01.jpg') }}"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_02.jpg') }}"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_03.jpg') }}"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_04.jpg') }}"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_05.jpg') }}"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_06.jpg') }}"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_07.jpg') }}"></a></li>
+                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_08.jpg') }}"></a></li>
             </ul>
         </div><!-- end widget -->
     </div><!-- end container -->
@@ -229,6 +229,9 @@
 <script src="{{ asset('js/jetmenu.js') }}"></script>
 <script src="{{ asset('js/jquery.hoverex.min.js') }}"></script>
 <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
+<script src="{{ asset('js/jquery.jigowatt.js') }}"></script>
+<script src="{{ asset('js/jquery.animate-enhanced.min.js') }}"></script>
+<script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
