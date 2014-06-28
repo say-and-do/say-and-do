@@ -5,3 +5,8 @@ say_and_do_task_homepage:
 say_and_do_task_success:
     path:     /success/
     defaults: { _controller: SayAndDoTaskBundle:Default:success }
+
+sad_task.extract:
+    path:     /extract/
+    defaults: { _controller: SayAndDoTaskBundle:Default:extract }
+    methods:   [POST]
