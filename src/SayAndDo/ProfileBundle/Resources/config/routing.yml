@@ -1,0 +1,3 @@
+say_and_do_profile_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SayAndDoProfileBundle:Default:index }
