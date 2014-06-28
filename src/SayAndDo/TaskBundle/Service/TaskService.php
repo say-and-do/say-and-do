@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManager;
 use SayAndDo\TaskBundle\DependencyInjection\TaskPoints;
 use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
 use SayAndDo\TaskBundle\Entity\Task;
+use SayAndDo\TaskBundle\Exception\TaskAlreadyCompletedException;
 
 class TaskService {
 
@@ -43,6 +44,10 @@ class TaskService {
 
     public function completeTask(Task $task)
     {
+        if ($task->getStatus() == TaskStatus::STATUS_DONE) {
+            throw new TaskAlreadyCompletedException();
+        }
+
         $task->setStatus(TaskStatus::STATUS_DONE);
         $this->store($task);
 
