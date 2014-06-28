@@ -6,8 +6,6 @@
             <table class="table table-condensed table-hover">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>URL</th>
                     <th>Antraštė</th>
                     <th></th>
                 </tr>
@@ -15,8 +13,6 @@
                 <tbody>
                 {% for document in documents %}
                     <tr>
-                        <td>{{ document.id }}</td>
-                        <td>{{ document.url }}</td>
                         <td>{{ document.title }}</td>
                         <td>
                             <a class="btn btn-xs btn-primary" href="{{ path("say_and_do_analyzis_homepage.view", {'id' : document.id}) }}">[view]</a>

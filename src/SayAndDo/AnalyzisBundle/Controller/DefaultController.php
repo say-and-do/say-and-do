@@ -19,7 +19,18 @@ class DefaultController extends Controller
 
         $message = 'Index already exists';
         if (!$index->exists()) {
-            $index->create();
+            $data = [
+                'analysis' => [
+                    'analyzer' => [
+                        'my_analyzer' => [
+                            'type'     => 'snowball',
+                            'language' => 'english'
+                        ]
+                    ]
+                ]
+            ];
+
+            $index->create($data);
             $message = 'Index created';
         }
 
