@@ -11,9 +11,14 @@ SayAndDo\ProfileBundle\Entity\Profile:
         title:
             type: string
             length: 255
+        position:
+            type: string
+            length: 255
+        political_party:
+            type: string
+            length: 255
     oneToMany:
         tasks:
             targetEntity: SayAndDo\TaskBundle\Entity\Task
             mappedBy: profile
-            cascade: ["persist", "merge"]
     lifecycleCallbacks: {  }

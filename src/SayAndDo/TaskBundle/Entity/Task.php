@@ -14,16 +14,6 @@ class Task
      */
     private $id;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
     /**
      * @var string
      */
@@ -39,6 +29,26 @@ class Task
      */
     private $status;
 
+    /**
+     * @var \SayAndDo\PromiseBundle\Entity\Promise
+     */
+    private $promise;
+
+    /**
+     * @var \SayAndDo\ProfileBundle\Entity\Profile
+     */
+    private $profile;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set title
@@ -108,39 +118,6 @@ class Task
     {
         return $this->status;
     }
-    /**
-     * @var \SayAndDo\ProfileBundle\Entity\Profile
-     */
-    private $profile;
-
-
-    /**
-     * Set profile
-     *
-     * @param \SayAndDo\ProfileBundle\Entity\Profile $profile
-     * @return Task
-     */
-    public function setProfile(\SayAndDo\ProfileBundle\Entity\Profile $profile = null)
-    {
-        $this->profile = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Get profile
-     *
-     * @return \SayAndDo\ProfileBundle\Entity\Profile 
-     */
-    public function getProfile()
-    {
-        return $this->profile;
-    }
-    /**
-     * @var \SayAndDo\PromiseBundle\Entity\Promise
-     */
-    private $promise;
-
 
     /**
      * Set promise
@@ -163,5 +140,28 @@ class Task
     public function getPromise()
     {
         return $this->promise;
+    }
+
+    /**
+     * Set profile
+     *
+     * @param \SayAndDo\ProfileBundle\Entity\Profile $profile
+     * @return Task
+     */
+    public function setProfile(\SayAndDo\ProfileBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \SayAndDo\ProfileBundle\Entity\Profile 
+     */
+    public function getProfile()
+    {
+        return $this->profile;
     }
 }

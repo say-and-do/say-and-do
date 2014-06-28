@@ -14,6 +14,33 @@ class Profile
      */
     private $id;
 
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $position;
+
+    /**
+     * @var string
+     */
+    private $political_party;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tasks;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -24,11 +51,6 @@ class Profile
     {
         return $this->id;
     }
-    /**
-     * @var string
-     */
-    private $title;
-
 
     /**
      * Set title
@@ -52,17 +74,51 @@ class Profile
     {
         return $this->title;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tasks;
 
     /**
-     * Constructor
+     * Set position
+     *
+     * @param string $position
+     * @return Profile
      */
-    public function __construct()
+    public function setPosition($position)
     {
-        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set political_party
+     *
+     * @param string $politicalParty
+     * @return Profile
+     */
+    public function setPoliticalParty($politicalParty)
+    {
+        $this->political_party = $politicalParty;
+
+        return $this;
+    }
+
+    /**
+     * Get political_party
+     *
+     * @return string 
+     */
+    public function getPoliticalParty()
+    {
+        return $this->political_party;
     }
 
     /**
