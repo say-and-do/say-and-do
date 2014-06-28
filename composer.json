@@ -1,0 +1,8 @@
+{
+    "name": "say-and-do/say-and-do",
+    "require": {
+        "symfony/symfony": "2.4.*",
+        "elasticsearch/elasticsearch": "*",
+        "cocur/slugify": "*"
+    }
+}
