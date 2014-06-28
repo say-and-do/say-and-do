@@ -11,3 +11,5 @@
 !bin/console
 !bin/symfony_requirements
 /composer.phar
+/.idea/*
+/.vagrant/*
