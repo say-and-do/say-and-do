@@ -153,4 +153,32 @@ class Profile
     {
         return $this->tasks;
     }
+    /**
+     * @var integer
+     */
+    private $points;
+
+
+    /**
+     * Set points
+     *
+     * @param integer $points
+     * @return Profile
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer 
+     */
+    public function getPoints()
+    {
+        return $this->points;
+    }
 }

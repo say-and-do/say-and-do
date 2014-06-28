@@ -17,6 +17,8 @@ SayAndDo\ProfileBundle\Entity\Profile:
         political_party:
             type: string
             length: 255
+        points:
+            type: integer
     oneToMany:
         tasks:
             targetEntity: SayAndDo\TaskBundle\Entity\Task
