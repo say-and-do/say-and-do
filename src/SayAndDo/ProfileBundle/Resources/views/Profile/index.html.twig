@@ -1,0 +1,33 @@
+{% extends '::rightcolumn.html.twig' %}
+
+{% block breadcrumb %}
+    <li>Profiliai</li>
+{% endblock %}
+
+{% block header_title %}
+    Profiliai
+{% endblock %}
+
+{% block inner_content %}
+    <div id="bbpress-forums">
+        <ul class="bbp-forums">
+            {% for profile in profiles %}
+                <li class="bbp-body">
+                    <ul class="forum type-forum status-publish hentry loop-item-0 odd bbp-forum-status-open bbp-forum-visibility-publish">
+                        <li class="bbp-forum-info">
+                            <a class="bbp-forum-title"
+                               href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}"
+                               title="General">{{ profile.title }}</a> <small>{{ profile.position }}</small>
+
+                            <div class="bbp-forum-content">
+                                {{ profile.description }}
+                            </div>
+                        </li>
+                        <li class="bbp-forum-topic-count pull-right">{{ profile.points }}</li>
+                    </ul>
+                    <!-- end bbp forums -->
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
