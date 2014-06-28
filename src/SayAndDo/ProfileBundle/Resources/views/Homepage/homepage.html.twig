@@ -51,13 +51,13 @@
                         </div>
                         <div class="progress">
                             <div data-effect="slide-left" class="progress-bar progress-bar-danger effect-slide-left"
-                                 style="background-color: #5cb85c; width: {{ ((profile.tasks_done|length / total_tasks) * 100) }}%; -webkit-transition: all 0.7s ease-in-out; transition: all 0.7s ease-in-out;">
-                                <span>Atlikta</span></div>
+                                 style="background-color: #f0ad4e; width: {{ ((profile.tasks_in_progress|length / total_tasks) * 100) }}%; -webkit-transition: all 0.7s ease-in-out; transition: all 0.7s ease-in-out;">
+                                <span>Vykdoma</span></div>
                         </div>
                         <div class="progress">
                             <div data-effect="slide-left" class="progress-bar progress-bar-danger effect-slide-left"
-                                 style="background-color: #f0ad4e; width: {{ ((profile.tasks_in_progress|length / total_tasks) * 100) }}%; -webkit-transition: all 0.7s ease-in-out; transition: all 0.7s ease-in-out;">
-                                <span>Vykdoma</span></div>
+                                 style="background-color: #5cb85c; width: {{ ((profile.tasks_done|length / total_tasks) * 100) }}%; -webkit-transition: all 0.7s ease-in-out; transition: all 0.7s ease-in-out;">
+                                <span>Atlikta</span></div>
                         </div>
                     </div>
                 </div>
