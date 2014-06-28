@@ -10,24 +10,33 @@
 
 {% block inner_content %}
     <div id="bbpress-forums">
-        <ul class="bbp-forums">
             {% for profile in profiles %}
-                <li class="bbp-body">
-                    <ul class="forum type-forum status-publish hentry loop-item-0 odd bbp-forum-status-open bbp-forum-visibility-publish">
-                        <li class="bbp-forum-info">
-                            <a class="bbp-forum-title"
-                               href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}"
-                               title="General">{{ profile.title }}</a> <small>{{ profile.position }}</small>
-
-                            <div class="bbp-forum-content">
-                                {{ profile.description }}
+                {% if loop.index > 0 %}
+                    <br>
+                {% endif %}
+                <div class="author_box clearfix">
+                    <div class="col-lg-10 first">
+                        <a href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}"><img class="img-circle alignleft" width="100" src="{{ asset('profiles/profile_'~profile.getId()~'.png') }}" alt=""></a>
+                        <h4><a href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}">{{ profile.getTitle() }} - {{ profile.getPosition() }} <small>{{ profile.getPoliticalParty() }}</small></a></h4>
+                        <p>{{ profile.getDescription() }}</p>
+                        <div class="social_buttons">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 last">
+                        <div class="pull-right">
+                            <div class="f-element col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="milestone-counter">
+                                    <span class="stat-count highlight">{{ profile.getPoints() }}</span>
+                                    <div class="milestone-details">Indeksas</div>
+                                </div>
                             </div>
-                        </li>
-                        <li class="bbp-forum-topic-count pull-right">{{ profile.points }}</li>
-                    </ul>
-                    <!-- end bbp forums -->
-                </li>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
     </div>
 {% endblock %}
