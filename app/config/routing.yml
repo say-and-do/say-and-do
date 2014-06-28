@@ -1,3 +1,7 @@
+say_and_do_task:
+    resource: "@SayAndDoTaskBundle/Resources/config/routing.yml"
+    prefix:   /task
+
 say_and_do_profile:
     resource: "@SayAndDoProfileBundle/Resources/config/routing.yml"
     prefix:   /
