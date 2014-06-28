@@ -1,12 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends '::fullwidth.html.twig' %}
+
+{% block top_menu %}{% endblock %}
+{% block bottom_menu %}{% endblock %}
+{% block footer %}{% endblock %}
 
 {% block content %}
     <div class="row">
-        <h1>{{ document.title }}
-            <small><a href="{{ document.url }}" target="_blank"><i class="fa fa-external-link"></i></a></small>
-        </h1>
-        <p>
-            {{ document.content }}
-        </p>
+        <div class="col-md-offset-1 col-md-10">
+            <h1>{{ document.title }}
+                <small><a href="{{ document.url }}" target="_blank"><i class="fa fa-external-link"></i></a></small>
+            </h1>
+            <p>
+                {{ document.content }}
+            </p>
+        </div>
     </div>
 {% endblock %}
