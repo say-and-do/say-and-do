@@ -1,16 +1,16 @@
 ---
 vagrantfile-local:
     vm:
-        box: puphpet/debian75-x64
-        box_url: puphpet/debian75-x64
+        box: puphpet/debian75-x32
+        box_url: puphpet/debian75-x32
         hostname: null
-        memory: '1024'
+        memory: '512'
         chosen_provider: virtualbox
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                6SqKFSmLK3Pg:
-                    host: '6767'
+                G0TLspAEyjDb:
+                    host: '5716'
                     guest: '22'
         provider:
             virtualbox:
@@ -32,7 +32,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            mu7pWXYlG63i:
+            D7GrBOz89KA4:
                 source: ./
                 target: /var/www
                 sync_type: default
@@ -56,7 +56,6 @@ vagrantfile-local:
 server:
     packages:
         - vim
-        - tree
     dot_files:
         -
             bash_aliases: null
@@ -86,7 +85,7 @@ apache:
         - php
         - rewrite
     vhosts:
-        HSL0YseeqxYe:
+        o40vpj92TfOm:
             servername: awesome.dev
             serveraliases:
                 - www.awesome.dev
@@ -110,11 +109,9 @@ apache:
 nginx:
     install: '1'
     vhosts:
-        9xzBw5w6w3Fw:
-            server_name: awesome.dev
-            server_aliases:
-                - www.awesome.dev
-            www_root: /var/www/awesome.dev
+        vL0NVzgUICAk:
+            server_name: darau.dev
+            www_root: /var/www/darau.dev
             listen_port: '80'
             index_files:
                 - index.html
@@ -160,7 +157,7 @@ mysql:
     root_password: '123'
     adminer: 0
     databases:
-        zlxohtaRBYER:
+        DS4TQ8Mc3EUr:
             grant:
                 - ALL
             name: dbname
@@ -206,7 +203,7 @@ beanstalkd:
     beanstalk_console: 0
     binlogdir: /var/lib/beanstalkd/binlog
 rabbitmq:
-    install: 0
+    install: '1'
     settings:
         port: '5672'
 elastic_search:
