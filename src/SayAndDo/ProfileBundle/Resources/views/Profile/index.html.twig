@@ -16,7 +16,7 @@
                 {% endif %}
                 <div class="author_box clearfix">
                     <div class="col-lg-10 first">
-                        <a href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}"><img class="img-circle alignleft" width="100" src="{{ asset('demos/team_02.png') }}" alt=""></a>
+                        <a href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}"><img class="img-circle alignleft" width="100" src="{{ asset('profiles/profile_'~profile.getId()~'.png') }}" alt=""></a>
                         <h4><a href="{{ path('say_and_do_profile_details', {'id': profile.id }) }}">{{ profile.getTitle() }} - {{ profile.getPosition() }} <small>{{ profile.getPoliticalParty() }}</small></a></h4>
                         <p>{{ profile.getDescription() }}</p>
                         <div class="social_buttons">
