@@ -1,7 +1,7 @@
 parameters:
-#    say_and_do_task.example.class: SayAndDo\TaskBundle\Example
+     say_and_do_task.service.class: SayAndDo\TaskBundle\Service\TaskService
 
 services:
-#    say_and_do_task.example:
-#        class: %say_and_do_task.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  sd_task.service:
+      class: %say_and_do_task.service.class%
+      arguments: [@doctrine.orm.default_entity_manager]
