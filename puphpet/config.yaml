@@ -113,7 +113,7 @@ nginx:
             server_name: darau.dev
             server_aliases:
                 - www.darau.dev
-            www_root: /var/www
+            www_root: /var/www/web
             listen_port: '80'
             index_files:
                 - app.php
