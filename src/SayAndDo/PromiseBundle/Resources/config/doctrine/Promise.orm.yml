@@ -11,4 +11,9 @@ SayAndDo\PromiseBundle\Entity\Promise:
         task:
           targetEntity: SayAndDo\TaskBundle\Entity\Task
           inversedBy: task
+    oneToMany:
+        proofs:
+            targetEntity: SayAndDo\ProofBundle\Entity\Proof
+            mappedBy: promise
+            cascade: ["persist", "merge"]
     lifecycleCallbacks: {  }
