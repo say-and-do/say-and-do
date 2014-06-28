@@ -5,6 +5,8 @@ namespace SayAndDo\TaskBundle\Service;
 
 
 use Doctrine\ORM\EntityManager;
+use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
+use SayAndDo\TaskBundle\Entity\Task;
 
 class TaskService {
 
@@ -26,4 +28,21 @@ class TaskService {
         $this->em->flush();
     }
 
+    public function confirmTask(Task $task)
+    {
+        $task->setStatus(TaskStatus::STATUS_CONFIRMED);
+        $this->store($task);
+    }
+
+    public function startTask(Task $task)
+    {
+        $task->setStatus(TaskStatus::STATUS_IN_PROGRESS);
+        $this->store($task);
+    }
+
+    public function completeTask(Task $task)
+    {
+        $task->setStatus(TaskStatus::STATUS_DONE);
+        $this->store($task);
+    }
 } 
