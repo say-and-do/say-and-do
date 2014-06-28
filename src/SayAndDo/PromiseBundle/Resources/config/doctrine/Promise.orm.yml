@@ -7,6 +7,10 @@ SayAndDo\PromiseBundle\Entity\Promise:
             id: true
             generator:
                 strategy: AUTO
+    fields:
+        url:
+                type: string
+                length: 255
     oneToOne:
         task:
           targetEntity: SayAndDo\TaskBundle\Entity\Task
