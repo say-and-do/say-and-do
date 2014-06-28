@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new SayAndDo\AnalyzisBundle\SayAndDoAnalyzisBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
             new SayAndDo\AdminBundle\SayAndDoAdminBundle(),
+            new SayAndDo\ProofBundle\SayAndDoProofBundle(),
+            new SayAndDo\PromiseBundle\SayAndDoPromiseBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

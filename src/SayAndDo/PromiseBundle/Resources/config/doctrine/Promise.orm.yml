@@ -1,0 +1,19 @@
+SayAndDo\PromiseBundle\Entity\Promise:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToOne:
+        task:
+          targetEntity: SayAndDo\TaskBundle\Entity\Task
+          inversedBy: task
+    oneToMany:
+        proofs:
+            targetEntity: SayAndDo\ProofBundle\Entity\Proof
+            mappedBy: promise
+            cascade: ["persist", "merge"]
+    lifecycleCallbacks: {  }

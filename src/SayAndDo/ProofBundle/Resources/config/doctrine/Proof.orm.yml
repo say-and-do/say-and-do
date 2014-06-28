@@ -1,0 +1,14 @@
+SayAndDo\ProofBundle\Entity\Proof:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        promise:
+            targetEntity: SayAndDo\PromiseBundle\Entity\Promise
+            inversedBy: proofs
+    lifecycleCallbacks: {  }

@@ -20,4 +20,8 @@ SayAndDo\TaskBundle\Entity\Task:
         profile:
             targetEntity: SayAndDo\ProfileBundle\Entity\Profile
             inversedBy: tasks
+    oneToOne:
+        promise:
+            targetEntity: SayAndDo\PromiseBundle\Entity\Promise
+            mappedBy: promise
     lifecycleCallbacks: {  }

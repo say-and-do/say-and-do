@@ -1,0 +1,3 @@
+say_and_do_proof_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SayAndDoProofBundle:Default:index }
