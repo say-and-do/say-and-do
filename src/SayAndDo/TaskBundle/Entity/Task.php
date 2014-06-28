@@ -136,4 +136,32 @@ class Task
     {
         return $this->profile;
     }
+    /**
+     * @var \SayAndDo\PromiseBundle\Entity\Promise
+     */
+    private $promise;
+
+
+    /**
+     * Set promise
+     *
+     * @param \SayAndDo\PromiseBundle\Entity\Promise $promise
+     * @return Task
+     */
+    public function setPromise(\SayAndDo\PromiseBundle\Entity\Promise $promise = null)
+    {
+        $this->promise = $promise;
+
+        return $this;
+    }
+
+    /**
+     * Get promise
+     *
+     * @return \SayAndDo\PromiseBundle\Entity\Promise 
+     */
+    public function getPromise()
+    {
+        return $this->promise;
+    }
 }
