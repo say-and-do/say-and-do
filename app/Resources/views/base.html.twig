@@ -138,18 +138,8 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> View large map</a></li>
             </ul><!-- contact_details -->
         </div><!-- end widget -->
-        <div class="widget col-lg-3 col-md-3 col-sm-12">
-            <h4 class="title">Flickr Stream</h4>
-            <ul class="flickr">
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_01.jpg') }}"></a></li>
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_02.jpg') }}"></a></li>
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_03.jpg') }}"></a></li>
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_04.jpg') }}"></a></li>
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_05.jpg') }}"></a></li>
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_06.jpg') }}"></a></li>
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_07.jpg') }}"></a></li>
-                <li><a href="#"><img alt="" src="{{ asset('demos/flickr_08.jpg') }}"></a></li>
-            </ul>
+        <div id="footer-profiles-list" class="widget col-lg-3 col-md-3 col-sm-12">
+
         </div><!-- end widget -->
     </div><!-- end container -->
 
@@ -193,6 +183,18 @@
 <script src="{{ asset('js/gritter/js/jquery.gritter.js') }}"></script>
 <script src="{{ asset('js/gritter/gritter-conf.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url:    "/profiles/newest",
+            type:   "GET",
+            data:   {},
+            success: function (result) {
+                $("#footer-profiles-list").html(result);
+            }
+        });
+    });
+</script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

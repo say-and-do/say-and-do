@@ -6,6 +6,12 @@ say_and_do_profile_profiles:
     path:     /profiles
     defaults: { _controller: SayAndDoProfileBundle:Profile:index }
 
+say_and_dpo_profile_newest:
+    path:     /profiles/newest
+    defaults:
+        _controller: SayAndDoProfileBundle:Profile:newest
+    methods: [GET]
+
 say_and_do_profile_details:
     path: /profile/{id}
     defaults:
