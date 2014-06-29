@@ -63,6 +63,7 @@ class DefaultController extends Controller
                 $task->setProfile($profile);
 
                 $task->setPromise($promise);
+                $promise->setTask($task);
 
                 $this->get('sd_task.service')->store($task);
                 $this->redirect($this->generateUrl('say_and_do_task_success'));

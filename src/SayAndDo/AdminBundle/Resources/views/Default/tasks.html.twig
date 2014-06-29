@@ -1,0 +1,35 @@
+{% extends '::admin.html.twig' %}
+
+{% block inner_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h3><i class="fa fa-angle-right"></i> Nauji pažadai</h3>
+        </div>
+        <div class="col-md-offset-1 col-md-10">
+            <table class="table table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th>Antraštė</th>
+                    <th>Politikas</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td><a href="{{ path("say_and_do_admin_tasks_view", {'id' : task.id}) }}">{{ task.title }}</a> </td>
+                        <td>{% if task.profile %}{{ task.profile.title }}{% endif %}</td>
+                        <td>
+                            <a class="btn btn-xs btn-success"
+                               href="{{ path("say_and_do_admin_tasks_confirm", {'id' : task.id}) }}"><i class="fa glyphicon glyphicon-check"> </i> </a>
+                            <a class="btn btn-xs btn-danger"
+                               href="{{ path("say_and_do_admin_tasks_delete", {'id' : task.id}) }}"><i class="fa glyphicon glyphicon-remove"> </i> </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+{% endblock %}
