@@ -24,4 +24,5 @@ SayAndDo\TaskBundle\Entity\Task:
         promise:
             targetEntity: SayAndDo\PromiseBundle\Entity\Promise
             mappedBy: task
+            cascade: ["persist"]
     lifecycleCallbacks: {  }
