@@ -1,9 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MaxFront | Bootstrap Front-End</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}MaxFront | Bootstrap Front-End{% endblock %}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -11,7 +11,8 @@
 
     {% block stylesheets %}
         <!-- Google Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,900,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,900,700&subset=latin,latin-ext'
+              rel='stylesheet' type='text/css'>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
         <!-- Bootstrap -->
@@ -36,165 +37,197 @@
 
     <script src="{{ asset('js/modernizr.js') }}"></script>
 </head>
-<div class="topbar clearfix">
-    <div class="container">
-        <div class="col-lg-12 text-right">
-            <div class="social_buttons">
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i class="fa fa-dribbble"></i></a>
-                <a href="#" data-toggle="tooltip" data-placement="bottom" title="RSS"><i class="fa fa-rss"></i></a>
+{% block top_bar %}
+    <div class="topbar clearfix">
+        <div class="container">
+            <div class="col-lg-12 text-right">
+                <div class="social_buttons">
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i
+                            class="fa fa-facebook"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i
+                            class="fa fa-twitter"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i
+                            class="fa fa-google-plus"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i
+                            class="fa fa-dribbble"></i></a>
+                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="RSS"><i class="fa fa-rss"></i></a>
+                </div>
             </div>
         </div>
-    </div><!-- end container -->
-</div><!-- end topbar -->
+        <!-- end container -->
+    </div><!-- end topbar -->
+{% endblock %}
 
 {% block top_menu %}
-<header class="header">
-    <div class="container">
-        <div class="site-header clearfix">
-            <div class="col-lg-3 col-md-3 col-sm-12 title-area">
-                <div class="site-title" id="title">
-                    <a href="index.html" title="">
-                        <h4>MAX<span>FRONT</span></h4>
-                    </a>
-                </div>
-            </div><!-- title area -->
-            <div class="col-lg-9 col-md-12 col-sm-12">
-                <div id="nav" class="right">
-                    <div class="container clearfix">
-                        <ul id="jetmenu" class="jetmenu blue">
-                            <li {% if app.request.get('_route') == 'say_and_do_profile_homepage' %} class="active"{% endif %}><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
-                            <li{% if app.request.get('_route') == 'say_and_do_profile_profiles' or app.request.get('_route') == 'say_and_do_profile_details' %} class="active"{% endif %}><a href="{{ path('say_and_do_profile_profiles') }}">Profiliai</a></li>
-                        </ul>
+    <header class="header">
+        <div class="container">
+            <div class="site-header clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-12 title-area">
+                    <div class="site-title" id="title">
+                        <a href="index.html" title="">
+                            <h4>MAX<span>FRONT</span></h4>
+                        </a>
                     </div>
-                </div><!-- nav -->
-            </div><!-- title area -->
-        </div><!-- site header -->
-    </div><!-- end container -->
-</header><!-- end header -->
+                </div>
+                <!-- title area -->
+                <div class="col-lg-9 col-md-12 col-sm-12">
+                    <div id="nav" class="right">
+                        <div class="container clearfix">
+                            <ul id="jetmenu" class="jetmenu blue">
+                                <li {% if app.request.get('_route') == 'say_and_do_profile_homepage' %} class="active"{% endif %}>
+                                    <a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
+                                <li{% if app.request.get('_route') == 'say_and_do_profile_profiles' or app.request.get('_route') == 'say_and_do_profile_details' %} class="active"{% endif %}>
+                                    <a href="{{ path('say_and_do_profile_profiles') }}">Profiliai</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- nav -->
+                </div>
+                <!-- title area -->
+            </div>
+            <!-- site header -->
+        </div>
+        <!-- end container -->
+    </header><!-- end header -->
 {% endblock %}
 
 {% block bottom_menu %}
-<section class="post-wrapper-top">
-    <div class="container">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <ul class="breadcrumb">
-                <li><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
-                {% block breadcrumb %}{% endblock %}
-            </ul>
-            <h2>{% block header_title %}{% endblock %}</h2>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <!-- search -->
-            <div class="search-bar">
-                <form action="" method="get">
-                    <fieldset>
-                        <input type="image" src="{{ asset('images/pixel.gif') }}" class="searchsubmit" alt="" />
-                        <input type="text" class="search_text showtextback" name="s" id="s" value="Search..." />
-                    </fieldset>
-                </form>
+    <section class="post-wrapper-top">
+        <div class="container">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
+                    {% block breadcrumb %}{% endblock %}
+                </ul>
+                <h2>{% block header_title %}{% endblock %}</h2>
             </div>
-            <!-- / end div .search-bar -->
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <!-- search -->
+                <div class="search-bar">
+                    <form action="" method="get">
+                        <fieldset>
+                            <input type="image" src="{{ asset('images/pixel.gif') }}" class="searchsubmit" alt=""/>
+                            <input type="text" class="search_text showtextback" name="s" id="s" value="Search..."/>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- / end div .search-bar -->
+            </div>
         </div>
-    </div>
-</section><!-- end post-wrapper-top -->
+    </section><!-- end post-wrapper-top -->
 {% endblock %}
 
 {% block content %}{% endblock %}
 
 {% block footer %}
-<footer class="footer">
-    <div class="container">
-        <div class="widget col-lg-3 col-md-3 col-sm-12">
-            <h4 class="title">About us</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
-            <a class="button small" href="#">read more</a>
-        </div><!-- end widget -->
-        <div class="widget col-lg-3 col-md-3 col-sm-12">
-            <h4 class="title">Recent Posts</h4>
-            <ul class="recent_posts">
-                <li>
-                    <a href="home1.html#">
-                        <img src="{{ asset('demos/recent_post_01.png') }}" alt="" />Our New Dashboard Is Here
-                    </a>
-                    <a class="readmore" href="#">read more</a>
-                </li>
-                <li>
-                    <a href="home1.html#">
-                        <img src="{{ asset('demos/recent_post_02.png') }}" alt="" />Design Is In The Air
-                    </a>
-                    <a class="readmore" href="#">read more</a>
-                </li>
-            </ul><!-- recent posts -->
-        </div><!-- end widget -->
-        <div class="widget col-lg-3 col-md-3 col-sm-12">
-            <h4 class="title">Get In Touch</h4>
-            <ul class="contact_details">
-                <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
-                <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
-                <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> View large map</a></li>
-            </ul><!-- contact_details -->
-        </div><!-- end widget -->
-        <div id="footer-profiles-list" class="widget col-lg-3 col-md-3 col-sm-12">
-
-        </div><!-- end widget -->
-    </div><!-- end container -->
-
-    <div class="copyrights">
+    <footer class="footer">
         <div class="container">
-            <div class="col-lg-6 col-md-6 col-sm-12 columns">
-                <p>Copyright © 2014 - All rights reserved. Designed by <a title="Bootstrap Themes" href="http://alvarez.is">Alvarez</a></p>
-            </div><!-- end widget -->
-            <div class="col-lg-6 col-md-6 col-sm-12 columns text-right">
-                <div class="footer-menu right">
-                    <ul class="menu">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                        <li><a href="#">Site Terms</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div><!-- end large-6 -->
-        </div><!-- end container -->
-    </div><!-- end copyrights -->
-</footer><!-- end footer -->
-{% endblock %}
-<div class="dmtop">Scroll to Top</div>
+            <div class="widget col-lg-3 col-md-3 col-sm-12">
+                <h4 class="title">About us</h4>
 
-<!-- Main Scripts-->
-<script src="{{ asset('assets/js/jquery.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/js/jquery.unveilEffects.js') }}"></script>
-<script src="{{ asset('js/retina-1.1.0.js') }}"></script>
-<script src="{{ asset('js/jquery.hoverex.min.js') }}"></script>
-<script src="{{ asset('js/jquery.hoverdir.js') }}"></script>
-<script src="{{ asset('js/owl.carousel.js') }}"></script>
-<script src="{{ asset('js/jetmenu.js') }}"></script>
-<script src="{{ asset('js/jquery.hoverex.min.js') }}"></script>
-<script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
-<script src="{{ asset('js/jquery.jigowatt.js') }}"></script>
-<script src="{{ asset('js/jquery.animate-enhanced.min.js') }}"></script>
-<script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
-<script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
-<script src="{{ asset('js/gritter/js/jquery.gritter.js') }}"></script>
-<script src="{{ asset('js/gritter/gritter-conf.js') }}"></script>
-<script src="{{ asset('js/custom.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.ajax({
-            url:    "/profiles/newest",
-            type:   "GET",
-            data:   {},
-            success: function (result) {
-                $("#footer-profiles-list").html(result);
-            }
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry"s standard dummy text ever since the 1500s..</p>
+                <a class="button small" href="#">read more</a>
+            </div>
+            <!-- end widget -->
+            <div class="widget col-lg-3 col-md-3 col-sm-12">
+                <h4 class="title">Recent Posts</h4>
+                <ul class="recent_posts">
+                    <li>
+                        <a href="home1.html#">
+                            <img src="{{ asset('demos/recent_post_01.png') }}" alt=""/>Our New Dashboard Is Here
+                        </a>
+                        <a class="readmore" href="#">read more</a>
+                    </li>
+                    <li>
+                        <a href="home1.html#">
+                            <img src="{{ asset('demos/recent_post_02.png') }}" alt=""/>Design Is In The Air
+                        </a>
+                        <a class="readmore" href="#">read more</a>
+                    </li>
+                </ul>
+                <!-- recent posts -->
+            </div>
+            <!-- end widget -->
+            <div class="widget col-lg-3 col-md-3 col-sm-12">
+                <h4 class="title">Get In Touch</h4>
+                <ul class="contact_details">
+                    <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
+                    <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
+                    <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i> View large map</a></li>
+                </ul>
+                <!-- contact_details -->
+            </div>
+            <!-- end widget -->
+            <div id="footer-profiles-list" class="widget col-lg-3 col-md-3 col-sm-12">
+                
+            </div>
+            <!-- end widget -->
+        </div>
+        <!-- end container -->
+
+        <div class="copyrights">
+            <div class="container">
+                <div class="col-lg-6 col-md-6 col-sm-12 columns">
+                    <p>Copyright © 2014 - All rights reserved. Designed by <a title="Bootstrap Themes"
+                                                                              href="http://alvarez.is">Alvarez</a></p>
+                </div>
+                <!-- end widget -->
+                <div class="col-lg-6 col-md-6 col-sm-12 columns text-right">
+                    <div class="footer-menu right">
+                        <ul class="menu">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                            <li><a href="#">Site Terms</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end large-6 -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end copyrights -->
+    </footer><!-- end footer -->
+{% endblock %}
+
+{% block scroll_to_top %}
+    <div class="dmtop">Scroll to Top</div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Main Scripts-->
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.unveilEffects.js') }}"></script>
+    <script src="{{ asset('js/retina-1.1.0.js') }}"></script>
+    <script src="{{ asset('js/jquery.hoverex.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.hoverdir.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.js') }}"></script>
+    <script src="{{ asset('js/jetmenu.js') }}"></script>
+    <script src="{{ asset('js/jquery.hoverex.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
+    <script src="{{ asset('js/jquery.jigowatt.js') }}"></script>
+    <script src="{{ asset('js/jquery.animate-enhanced.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ asset('js/gritter/js/jquery.gritter.js') }}"></script>
+    <script src="{{ asset('js/gritter/gritter-conf.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url:    "/profiles/newest",
+                type:   "GET",
+                data:   {},
+                success: function (result) {
+                    $("#footer-profiles-list").html(result);
+                }
+            });
         });
-    });
-</script>
-{% block javascripts %}{% endblock %}
+    </script>
+{% endblock %}
 </body>
 </html>
