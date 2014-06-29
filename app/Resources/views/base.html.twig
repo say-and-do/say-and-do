@@ -43,15 +43,8 @@
         <div class="container">
             <div class="col-lg-12 text-right">
                 <div class="social_buttons">
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i
+                    <a href="https://www.facebook.com/tvirtaszodis" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i
                             class="fa fa-facebook"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i
-                            class="fa fa-twitter"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i
-                            class="fa fa-google-plus"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Dribbble"><i
-                            class="fa fa-dribbble"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="RSS"><i class="fa fa-rss"></i></a>
                 </div>
             </div>
         </div>
@@ -65,7 +58,7 @@
             <div class="site-header clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-12 title-area">
                     <div class="site-title" id="title">
-                        <a href="index.html" title="">
+                        <a href="/" title="">
                             <h4>TVIRTAS<span>ŽODIS</span></h4>
                         </a>
                     </div>
@@ -124,11 +117,18 @@
     <footer class="footer">
         <div class="container">
             <div class="widget col-lg-3 col-md-3 col-sm-12">
-                <h4 class="title">About us</h4>
+                <h4 class="title">Apie mus</h4>
 
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry"s standard dummy text ever since the 1500s..</p>
-                <a class="button small" href="#">read more</a>
+                <p>Tai projektas gimęs hackathonp Techcity 2014 metu, projektą įgyvendino 4 aktyvių ir visuomeniškai atsakingų žmonių komanda.</p>
+            </div>
+            <!-- end widget -->
+            <div class="widget col-lg-3 col-md-3 col-sm-12">
+                <h4 class="title">Susiekite</h4>
+                <p>Turite klausimų, minčių? Susisiekite. Taip pat kviečiame prisidėti visus aktyvius žmones neabejingus Lietuvos ateičiai žmones.</p>
+                <ul class="contact_details">
+                    <li><i class="fa fa-envelope-o"></i> info@tvirtaszodis.lt</li>
+                </ul>
+                <!-- contact_details -->
             </div>
             <!-- end widget -->
             <div class="widget col-lg-3 col-md-3 col-sm-12">
@@ -138,17 +138,7 @@
                 </div>
             </div>
             <!-- end widget -->
-            <div class="widget col-lg-3 col-md-3 col-sm-12">
-                <h4 class="title">Get In Touch</h4>
-                <ul class="contact_details">
-                    <li><i class="fa fa-envelope-o"></i> info@yoursite.com</li>
-                    <li><i class="fa fa-phone-square"></i> +34 5565 6555</li>
-                    <li><i class="fa fa-home"></i> Some Fine Address, 887, Madrid, Spain.</li>
-                    <li><a href="#"><i class="fa fa-map-marker"></i> View large map</a></li>
-                </ul>
-                <!-- contact_details -->
-            </div>
-            <!-- end widget -->
+
             <div class="widget col-lg-3 col-md-3 col-sm-12">
                 <h4 class="title">Naujausi profiliai</h4>
                 <div id="footer-profiles-list">
@@ -184,7 +174,7 @@
 {% endblock %}
 
 {% block scroll_to_top %}
-    <div class="dmtop">Scroll to Top</div>
+    <div class="dmtop">Į viršų</div>
 {% endblock %}
 
 {% block javascripts %}
@@ -236,25 +226,25 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://assets.annotateit.org/annotator/v1.1.0/annotator-full.min.js"></script>
     <script type="application/javascript">
-        var $j = jQuery.noConflict();
+        var $ = jQuery.noConflict();
 
 
-       $j("#get-promise").on("click", function (event) {
+       $("#get-promise").on("click", function (event) {
 
-            var url =$j("#promise-url").val();
+            var url =$("#promise-url").val();
 
-           $j.ajax({
+           $.ajax({
                 url:     "/task/extract/",
                 type:    "POST",
                 data:    {
                     "url": url
                 },
                 success: function (result) {
-                   $j("#result").html(result)
+                   $("#result").html(result)
                             .annotator()
                             .annotator('addPlugin', 'Tags');
-                   $j("#result-shadow").val(result);
-                   $j("#url-shadow").val(url);
+                   $("#result-shadow").val(result);
+                   $("#url-shadow").val(url);
                 }
             });
         });
