@@ -35,6 +35,11 @@ class TaskService {
     {
         $task->setStatus(TaskStatus::STATUS_CONFIRMED);
         $this->store($task);
+
+        if ($task->getProfile()) {
+            $task->getProfile()->setPoints($task->getProfile()->getPoints() + TaskPoints::FOR_NEW_TASK);
+            $this->saveEntity($task->getProfile());
+        }
     }
 
     public function startTask(Task $task)
@@ -45,11 +50,6 @@ class TaskService {
 
         $task->setStatus(TaskStatus::STATUS_IN_PROGRESS);
         $this->store($task);
-
-        if ($task->getProfile()) {
-            $task->getProfile()->setPoints($task->getProfile()->getPoints() + TaskPoints::FOR_NEW_TASK);
-            $this->saveEntity($task->getProfile());
-        }
     }
 
     public function completeTask(Task $task)
