@@ -29,18 +29,13 @@
                 <tr>
                     <th>Score</th>
                     <th>Title</th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for hit in hits %}
                     <tr>
                         <td>{% if hit.score is not empty %}{{ hit.score }}{% else %}n\a{% endif %}</td>
-                        <td>{{ hit.title }}</td>
-                        <td>
-                            <a class="btn btn-xs btn-primary"
-                               href="{{ path("say_and_do_analyzis_homepage.view", {'id' : hit.id}) }}">[view]</a>
-                        </td>
+                        <td><a href="{{ path("say_and_do_analyzis_homepage.view", {'id' : hit.id}) }}">{{ hit.title }}</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

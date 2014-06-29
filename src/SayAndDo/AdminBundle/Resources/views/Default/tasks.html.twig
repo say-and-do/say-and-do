@@ -21,9 +21,9 @@
                         <td>{% if task.profile %}{{ task.profile.title }}{% endif %}</td>
                         <td>
                             <a class="btn btn-xs btn-success"
-                               href="{{ path("say_and_do_admin_tasks_confirm", {'id' : task.id}) }}"><i class="fa glyphicon glyphicon-check"> </i> </a>
+                               href="{{ path("say_and_do_admin_tasks_confirm", {'id' : task.id}) }}"><i class="fa fa-check"> </i> </a>
                             <a class="btn btn-xs btn-danger"
-                               href="{{ path("say_and_do_admin_tasks_delete", {'id' : task.id}) }}"><i class="fa glyphicon glyphicon-remove"> </i> </a>
+                               href="{{ path("say_and_do_admin_tasks_delete", {'id' : task.id}) }}"><i class="glyphicon glyphicon-remove"> </i> </a>
                         </td>
                     </tr>
                 {% endfor %}
