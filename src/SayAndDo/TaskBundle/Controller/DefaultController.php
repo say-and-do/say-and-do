@@ -58,7 +58,14 @@ class DefaultController extends Controller
     public function extractAction(Request $request)
     {
         $url = $request->request->get('url');
-        return new Response($this->get('sad_extract.service')->getArticle($url));
+
+        $content = $this->get('sad_extract.service')->getArticle($url);
+
+        if ($content === null) {
+            $content = 'Negalime išimti straipsnio iš pateiktos nuorodos.';
+        }
+
+        return new Response($content);
     }
 
 }
