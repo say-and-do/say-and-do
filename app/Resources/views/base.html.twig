@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{ asset('css/colors/turquoise.css') }}">
         <!-- Layer Slider -->
         <link rel="stylesheet" href="{{ asset('layerslider/css/layerslider.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('css/annotator.min.css') }}" type="text/css">
     {% endblock %}
 
 
@@ -203,6 +204,7 @@
     <script src="{{ asset('js/jquery.easypiechart.min.js') }}"></script>
     <script src="{{ asset('js/gritter/js/jquery.gritter.js') }}"></script>
     <script src="{{ asset('js/gritter/gritter-conf.js') }}"></script>
+    <script src="{{ asset('js/annotator-full.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -223,8 +225,42 @@
                     $("#footer-tasks-list").html(result);
                 }
             });
+
+
         });
     </script>
+
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="http://assets.annotateit.org/annotator/v1.1.0/annotator-full.min.js"></script>
+    <script type="application/javascript">
+        var $j = jQuery.noConflict();
+
+
+       $j("#get-promise").on("click", function (event) {
+
+            var url =$j("#promise-url").val();
+
+           $j.ajax({
+                url:     "/task/extract/",
+                type:    "POST",
+                data:    {
+                    "url": url
+                },
+                success: function (result) {
+                   $j("#result").html(result)
+                            .annotator()
+                            .annotator('addPlugin', 'Tags');
+                   $j("#result-shadow").val(result);
+                   $j("#url-shadow").val(url);
+                }
+            });
+        });
+
+
+    </script>
+
 {% endblock %}
 </body>
 </html>
