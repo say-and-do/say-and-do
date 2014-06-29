@@ -96,6 +96,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     <script>
         // Chart Effects;
         $('.chart-tasks').easyPieChart({
