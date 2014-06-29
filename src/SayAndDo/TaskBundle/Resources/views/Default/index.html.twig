@@ -49,7 +49,8 @@
                     </h4>
                     {{ form_start(form, {'attr':{'class': 'form-horizontal'} }) }}
                         {{ form_errors(form) }}
-                            {{ form_widget(form.title, {'attr': {'class': 'required fr_input_txt fr_97_5pro popupInput form-control', 'placeholder': 'Politikas'} }) }}
+                            <input type="text" id="form_profile" name="profile" required="required" class="required fr_input_txt fr_97_5pro popupInput form-control" placeholder="Politikas">
+                            {{ form_widget(form.title, {'attr': {'class': 'required fr_input_txt fr_97_5pro popupInput form-control', 'placeholder': 'Antraštė'} }) }}
                             {{ form_errors(form.title) }}
                             {{ form_widget(form.description, {'attr': {'class': 'required fr_input_txt fr_97_5pro partial_address form-control', 'placeholder': 'Pažado aprašymas'} }) }}
                             {{ form_errors(form.description) }}
