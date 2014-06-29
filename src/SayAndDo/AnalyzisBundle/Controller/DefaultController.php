@@ -52,18 +52,22 @@ class DefaultController extends Controller
 
     public function addDocumentAction(Request $request)
     {
-        $document = [
-            'url'     => $request->request->get('url'),
-            'title'   => $request->request->get('title'),
-            'content' => $request->request->get('content')
-        ];
+        if ($request->isMethod('POST')) {
+            $document = [
+                'url'     => $request->request->get('url'),
+                'title'   => $request->request->get('title'),
+                'content' => $request->request->get('content')
+            ];
 
-        /** @var Repository $repo */
-        $repo = $this->get('say_and_do.analysis.repository.article');
+            /** @var Repository $repo */
+            $repo = $this->get('say_and_do.analysis.repository.article');
 
-        $repo->create($document);
+            $repo->create($document);
 
-        return $this->redirect($this->generateUrl('say_and_do_analyzis_homepage'));
+            return $this->redirect($this->generateUrl('say_and_do_analyzis_homepage'));
+        } else {
+            return $this->render('SayAndDoAnalyzisBundle:Default:add.html.twig');
+        }
     }
 
     public function viewDocumentAction($id)
