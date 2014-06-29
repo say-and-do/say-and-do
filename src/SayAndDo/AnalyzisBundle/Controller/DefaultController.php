@@ -84,10 +84,6 @@ class DefaultController extends Controller
                 'url'     => $data->url,
                 'content' => html_entity_decode(strip_tags($data->content))
             ];
-            /** @var Repository $repo */
-            $repo = $this->get('say_and_do.analysis.repository.article');
-
-            $repo->create($document);
         }
         return $this->render('SayAndDoAnalyzisBundle:Default:import.html.twig', ['document' => $document]);
     }
