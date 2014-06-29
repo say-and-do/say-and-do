@@ -71,6 +71,27 @@ class DefaultController extends Controller
         }
     }
 
+    public function importDocumentAction(Request $request)
+    {
+
+        if ($request->isMethod('POST')) {
+            $url  = $request->request->get('url');
+
+            $data = $this->get('sad_extract.service')->extractUrls([$url]);
+
+            var_dump($data);
+            die();
+            /** @var Repository $repo */
+            $repo = $this->get('say_and_do.analysis.repository.article');
+
+            $repo->create($document);
+
+            return $this->redirect($this->generateUrl('say_and_do_analyzis_homepage'));
+        } else {
+            return $this->render('SayAndDoAnalyzisBundle:Default:import.html.twig');
+        }
+    }
+
     public function viewDocumentAction($id)
     {
         /** @var Repository $repo */

@@ -30,3 +30,7 @@ say_and_do_analyzis_homepage.init:
     path:     /es/init
     defaults: { _controller: SayAndDoAnalyzisBundle:Default:init }
 
+say_and_do_analyzis_homepage.import:
+    path:     /es/import
+    defaults: { _controller: SayAndDoAnalyzisBundle:Default:importDocument }
+
