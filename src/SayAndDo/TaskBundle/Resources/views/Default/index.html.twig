@@ -72,37 +72,6 @@
 
     <div id="result" style="width: 400px;">
     </div>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="http://assets.annotateit.org/annotator/v1.1.0/annotator-full.min.js"></script>
-    <link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.1.0/annotator.min.css">
 
-    <script type="application/javascript">
-        var $j = jQuery.noConflict();
-
-        $j(document).ready(function () {
-
-            $j("#get-promise").on("click", function (event) {
-
-                var url = $j("#promise-url").val();
-
-                $j.ajax({
-                    url:     "/task/extract/",
-                    type:    "POST",
-                    data:    {
-                        "url": url
-                    },
-                    success: function (result) {
-                        $j("#result").html(result)
-                            .annotator()
-                            .annotator('addPlugin', 'Tags');
-                        $j("#result-shadow").val(result);
-                        $j("#url-shadow").val(url);
-                    }
-                });
-            });
-        });
-
-    </script>
 
 {% endblock %}
