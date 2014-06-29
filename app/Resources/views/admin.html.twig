@@ -19,8 +19,8 @@
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin/js/jquery.dcjqaccordion.2.7.js') }}"></script>
     <script src="{{ asset('admin/js/jquery.scrollTo.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
-    <script src="{{ asset('assets/js/common-scripts.js') }}"></script>
+    <script src="{{ asset('admin/js/jquery.nicescroll.js') }}"></script>
+    <script src="{{ asset('admin/js/common-scripts.js') }}"></script>
 {% endblock %}
 
 {% block scroll_to_top %}{% endblock %}
@@ -31,7 +31,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="#" class="logo"><b>DASH<span>IO</span></b></a>
+    <a href="#" class="logo"><b>TVIRTAS<span>ŽODIS</span></b></a>
     <!--logo end-->
     <div class="nav notify-row" id="top_menu">
         <!--  notification start -->
@@ -236,10 +236,10 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
 
-                <p class="centered"><a href="profile.html"><img src="{{ asset('admin/img/ui-sam.jpg') }}"
+                <p class="centered"><a href="profile.html"><img src="https://avatars3.githubusercontent.com/u/2177571?s=460}}"
                                                                 class="img-circle"
                                                                 width="80"></a></p>
-                <h5 class="centered">Sam Soffes</h5>
+                <h5 class="centered">Edvinas Kručas</h5>
 
                 <li class="mt">
                     <a href="#">
@@ -255,8 +255,8 @@
                         <span class="dcjq-icon"></span>
                     </a>
                     <ul class="sub" style="display: block;">
-                        <li><a href="{{ path('say_and_do_analyzis_homepage') }}">Pridėti naują</a></li>
-                        <li><a href="{{ path('say_and_do_analyzis_homepage.add') }}">Sąrašas</a></li>
+                        <li><a href="{{ path('say_and_do_analyzis_homepage.add') }}">Pridėti naują</a></li>
+                        <li><a href="{{ path('say_and_do_analyzis_homepage') }}">Sąrašas</a></li>
                         <li><a href="{{ path('say_and_do_analyzis_homepage.query') }}">Užklausos</a></li>
                     </ul>
                 </li>

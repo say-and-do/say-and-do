@@ -42,10 +42,11 @@ class DefaultController extends Controller
         /** @var Repository $repo */
         $repo = $this->get('say_and_do.analysis.repository.article');
 
+        $documents = $repo->getAll();
         return $this->render(
             'SayAndDoAnalyzisBundle:Default:index.html.twig',
             array(
-                'documents' => $repo->getAll(),
+                'documents' => $documents,
             )
         );
     }
