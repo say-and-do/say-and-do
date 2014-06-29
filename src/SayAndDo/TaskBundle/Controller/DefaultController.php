@@ -2,7 +2,9 @@
 
 namespace SayAndDo\TaskBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use SayAndDo\ProfileBundle\Entity\Profile;
 use SayAndDo\PromiseBundle\Entity\Promise;
 use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
 use SayAndDo\TaskBundle\Entity\Task;
@@ -33,6 +35,32 @@ class DefaultController extends Controller
         try {
 
             if ($form->isValid()) {
+
+                $formParams = $request->request->get('form');
+
+                /** @var EntityManager $repo */
+                $em = $this->get('doctrine.orm.default_entity_manager');
+
+                /** @var EntityRepository $repo */
+                $repo = $em->getRepository('SayAndDoProfileBundle:Profile');
+
+                /** @var Profile $profile */
+                $profile = $repo->findOneBy(['title' => $formParams['title']]);
+
+                if ($profile) {
+                    $task->setProfile($profile);
+                } else {
+                    $profile = new Profile();
+
+                    $profile->setTitle($formParams['title']);
+                    $profile->setPoints(50);
+                    $profile->setDescription('');
+                    $profile->setPosition('');
+                    $profile->setPoliticalParty('');
+
+                    $em->persist($profile);
+                    $em->flush();
+                }
 
                 $task->setPromise($promise);
 
