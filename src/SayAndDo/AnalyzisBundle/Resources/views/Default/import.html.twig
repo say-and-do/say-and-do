@@ -6,17 +6,34 @@
             <h3><i class="fa fa-angle-right"></i> Automatinis importavimas</h3>
         </div>
         <div class="col-md-offset-3 col-md-6">
-            <form role="form" action="{{ path("say_and_do_analyzis_homepage.add") }}" method="post">
-                <input type="hidden" name="imported" value="1"/>
+            {% if document is empty %}
+                <form role="form" action="{{ path("say_and_do_analyzis_homepage.import") }}" method="post">
+                    <input type="hidden" name="imported" value="1"/>
 
-                <div class="form-group">
-                    <label>URL</label>
-                    <input type="text" name="url" class="form-control"/>
-                </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Importuoti</button>
-            </form>
-            <br>
-            <br>
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input type="text" name="url" class="form-control"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Importuoti</button>
+                </form>
+            {% else %}
+                <form role="form" action="{{ path("say_and_do_analyzis_homepage.add") }}" method="post">
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input type="text" name="url" class="form-control" value="{{ document.url }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Antraštė</label>
+                        <input type="text" name="title" class="form-control" value="{{ document.title }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Turinys</label>
+                        <textarea class="form-control" name="content" cols="30" rows="10">{{ document.content }}
+                            "</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Pridėti</button>
+                </form>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
