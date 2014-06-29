@@ -2,6 +2,7 @@
 
 namespace SayAndDo\TaskBundle\Controller;
 
+use SayAndDo\PromiseBundle\Entity\Promise;
 use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
 use SayAndDo\TaskBundle\Entity\Task;
 use SayAndDo\TaskBundle\Exception\TaskStoreException;
@@ -15,6 +16,11 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
+        $promise = new Promise();
+        $promise->setUrl($request->request->get('result'));
+        //$promise->setUrl($request->request->get('result');
+        //$this->get('sad_promise.service')->store($pr);
+
         // create a task and give it some dummy data for this example
         $task = new Task();
         $task->setStatus(TaskStatus::STATUS_NEW);
@@ -22,28 +28,21 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($task)
             ->add('title', 'text')
             ->add('description', 'textarea')
-//            ->add(
-//                'link',
-//                'entity',
-//                array(
-//                    'class' => 'SayAndDoPromiseBundle:Promise',
-//                    'property' => 'url'
-//                )
-//            )
-            ->add('submit', 'submit', array('label' => 'Submit'))
             ->getForm();
 
         $form->handleRequest($request);
-
         try {
+
             if ($form->isValid()) {
+
+                $task->setPromise($promise);
+
                 $this->get('sd_task.service')->store($task);
                 $this->redirect($this->generateUrl('say_and_do_task_success'));
             }
         } catch (TaskStoreException $ex) {
             $form->addError(new FormError($ex->getMessage()));
         }
-
         return $this->render(
             'SayAndDoTaskBundle:Default:index.html.twig',
             array(
