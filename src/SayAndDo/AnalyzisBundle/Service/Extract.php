@@ -38,29 +38,6 @@ class Extract
         );
     }
 
-    /**
-     * Demo method
-     */
-    private function exampleEmbedly()
-    {
-        $api = new Embedly(array('user_agent' => 'Mozilla/5.0 (compatible; mytestapp/1.0)'));
-
-        // Single url
-        $objs = $api->oembed('http://www.youtube.com/watch?v=sPbJ4Z5D-n4&feature=topvideos');
-        print_r($objs);
-
-        // Multiple urls
-        $obj = $api->oembed(
-            array(
-                'urls' => array(
-                    'http://www.youtube.com/watch?v=sPbJ4Z5D-n4&feature=topvideos',
-                    'http://twitpic.com/3yr7hk'
-                )
-            )
-        );
-        print_r($obj);
-    }
-
     public function getDifdBotArticle($url)
     {
         $client = new Client();
