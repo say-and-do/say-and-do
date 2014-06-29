@@ -26,7 +26,7 @@
                             <span class="input-group-btn">
                                 <a id="get-promise" class="btn btn-info">Atidaryti</a>
                             </span>
-                            <input name="promise" id="promise" class="form-control" placeholder="Internetinis adresas" type="text">
+                            <input name="promise-url" id="promise-url" class="form-control" placeholder="Internetinis adresas" type="text">
                         </div>
                         <!-- /input-group -->
                     </div>
@@ -54,6 +54,7 @@
                             {{ form_widget(form.description, {'attr': {'class': 'required fr_input_txt fr_97_5pro partial_address form-control', 'placeholder': 'Pažado aprašymas'} }) }}
                             {{ form_errors(form.description) }}
                             <input type="hidden" name="result" id="result-shadow">
+                            <input type="hidden" name="url" id="url-shadow">
                             <div class="pull-right">
                                 <input type="submit" value="Išsaugoti" id="submit" class="button">
                             </div>
@@ -82,16 +83,21 @@
         $j(document).ready(function () {
 
             $j("#get-promise").on("click", function (event) {
+
+                var url = $j("#promise-url").val();
+
                 $j.ajax({
                     url:     "/task/extract/",
                     type:    "POST",
                     data:    {
+                        "url": url
                     },
                     success: function (result) {
                         $j("#result").html(result)
                             .annotator()
                             .annotator('addPlugin', 'Tags');
                         $j("#result-shadow").val(result);
+                        $j("#url-shadow").val(url);
                     }
                 });
             });

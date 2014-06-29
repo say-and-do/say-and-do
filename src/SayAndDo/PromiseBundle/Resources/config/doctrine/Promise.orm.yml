@@ -9,8 +9,11 @@ SayAndDo\PromiseBundle\Entity\Promise:
                 strategy: AUTO
     fields:
         url:
-                type: string
-                length: 255
+            type: string
+            length: 255
+        excerpt:
+          type: text
+
     oneToOne:
         task:
           targetEntity: SayAndDo\TaskBundle\Entity\Task
