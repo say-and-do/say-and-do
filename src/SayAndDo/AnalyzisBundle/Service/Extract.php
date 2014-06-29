@@ -2,8 +2,6 @@
 
 namespace SayAndDo\AnalyzisBundle\Service;
 
-//use Guzzle\Http\Client;
-
 use Embedly\Embedly;
 
 class Extract

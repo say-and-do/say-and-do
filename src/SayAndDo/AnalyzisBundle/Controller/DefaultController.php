@@ -71,6 +71,23 @@ class DefaultController extends Controller
         }
     }
 
+    public function importDocumentAction(Request $request)
+    {
+        $document = null;
+        if ($request->isMethod('POST')) {
+            $url = $request->request->get('url');
+
+            $data = current($this->get('sad_extract.service')->extractUrls([$url]));
+
+            $document = [
+                'title'   => $data->title,
+                'url'     => $data->url,
+                'content' => html_entity_decode(strip_tags($data->content))
+            ];
+        }
+        return $this->render('SayAndDoAnalyzisBundle:Default:import.html.twig', ['document' => $document]);
+    }
+
     public function viewDocumentAction($id)
     {
         /** @var Repository $repo */
