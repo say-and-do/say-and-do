@@ -16,6 +16,7 @@ set :use_composer, true
 set :symfony_console, "bin/console"
 set :cache_path,            "var/cache"
 set :log_path,              "var/logs"
+set :shared_files,      ["app/config/parameters.yml"]
 
 set  :keep_releases,  3
 set :use_sudo, false
