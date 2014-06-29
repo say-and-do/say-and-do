@@ -1,13 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends '::admin.html.twig' %}
 
-{% block top_menu %}{% endblock %}
-{% block bottom_menu %}{% endblock %}
-{% block footer %}{% endblock %}
-
-{% block content %}
-    <br>
+{% block inner_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h3><i class="fa fa-angle-right"></i> F.A.Q</h3>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
+            <h4></h4>
+
             <form role="form" action="{{ path("say_and_do_analyzis_homepage.query") }}" method="post">
                 <div class="input-group">
                     <input type="text" class="form-control" name="query" value="{{ query }}"/>
