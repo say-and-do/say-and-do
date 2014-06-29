@@ -34,7 +34,7 @@
     <!--logo end-->
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="login.html">Logout</a></li>
+            <li><a class="logout" href="{{ path("say_and_do_analyzis_homepage") }}">Darbo pabaiga</a></li>
         </ul>
     </div>
     </header>
@@ -54,20 +54,21 @@
                 <li class="mt">
                     <a href="#">
                         <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
+                        <span>Administravimas</span>
                     </a>
                 </li>
 
                 <li class="sub-menu dcjq-parent-li">
                     <a class="active dcjq-parent" href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Analizė</span>
+                        <span>Dokumentai</span>
                         <span class="dcjq-icon"></span>
                     </a>
                     <ul class="sub" style="display: block;">
-                        <li><a href="{{ path('say_and_do_analyzis_homepage.add') }}">Pridėti naują</a></li>
-                        <li><a href="{{ path('say_and_do_analyzis_homepage') }}">Sąrašas</a></li>
-                        <li><a href="{{ path('say_and_do_analyzis_homepage.query') }}">Užklausos</a></li>
+                        <li><a href="{{ path('say_and_do_analyzis_homepage.add') }}">Įvesti naują</a></li>
+                        <li><a href="{{ path('say_and_do_analyzis_homepage.import') }}">Importuoti per URL</a></li>
+                        <li><a href="{{ path('say_and_do_analyzis_homepage') }}">Visi dokumentai</a></li>
+                        <li><a href="{{ path('say_and_do_analyzis_homepage.query') }}">Paieška</a></li>
                     </ul>
                 </li>
             </ul>
