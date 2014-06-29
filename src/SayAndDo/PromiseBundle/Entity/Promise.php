@@ -30,6 +30,10 @@ class Promise
     private $proofs;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $excerpt;
+    /**
      * Constructor
      */
     public function __construct()
@@ -124,5 +128,28 @@ class Promise
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set excerpt
+     *
+     * @param string $excerpt
+     * @return Promise
+     */
+    public function setExcerpt($excerpt)
+    {
+        $this->excerpt = $excerpt;
+
+        return $this;
+    }
+
+    /**
+     * Get excerpt
+     *
+     * @return string 
+     */
+    public function getExcerpt()
+    {
+        return $this->excerpt;
     }
 }

@@ -1,0 +1,5 @@
+<ul class="flickr">
+    {% for newest_profile in newest_profiles %}
+        <li><a href="{{ path('say_and_do_profile_details', {'id': newest_profile.id }) }}"><img src="{{ asset('profiles/profile_'~newest_profile.getId()~'.png') }}" alt=""></a></li>
+    {% endfor %}
+</ul>

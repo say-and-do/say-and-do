@@ -19,3 +19,6 @@ services:
         class: SayAndDo\AnalyzisBundle\Service\ThresholdService
         calls:
             - [setType, [@say_and_do.analysis.type.article]]
+    sad_extract.service:
+        class: SayAndDo\AnalyzisBundle\Service\Extract
+        arguments: []

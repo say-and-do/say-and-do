@@ -46,4 +46,21 @@ class ProfileController extends Controller
             )
         );
     }
+
+    public function newestAction()
+    {
+        /** @var EntityRepository $repo */
+        $repo = $this->get('doctrine.orm.default_entity_manager')->getRepository('SayAndDoProfileBundle:Profile');
+
+        return $this->render(
+            'SayAndDoProfileBundle:Profile:newest.html.twig',
+            array(
+                'newest_profiles' => $repo->findBy(
+                    array(),
+                    array('id' => 'desc'),
+                    8
+                )
+            )
+        );
+    }
 }

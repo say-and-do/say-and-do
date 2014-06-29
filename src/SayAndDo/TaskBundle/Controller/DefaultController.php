@@ -2,6 +2,7 @@
 
 namespace SayAndDo\TaskBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use SayAndDo\PromiseBundle\Entity\Promise;
 use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
 use SayAndDo\TaskBundle\Entity\Task;
@@ -17,11 +18,9 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $promise = new Promise();
-        $promise->setUrl($request->request->get('result'));
-        //$promise->setUrl($request->request->get('result');
-        //$this->get('sad_promise.service')->store($pr);
+        $promise->setExcerpt($request->request->get('result'));
+        $promise->setUrl($request->request->get('url'));
 
-        // create a task and give it some dummy data for this example
         $task = new Task();
         $task->setStatus(TaskStatus::STATUS_NEW);
 
@@ -43,6 +42,7 @@ class DefaultController extends Controller
         } catch (TaskStoreException $ex) {
             $form->addError(new FormError($ex->getMessage()));
         }
+
         return $this->render(
             'SayAndDoTaskBundle:Default:index.html.twig',
             array(
@@ -56,9 +56,34 @@ class DefaultController extends Controller
         return new Response('Success..!');
     }
 
-    public function extractAction()
+    public function extractAction(Request $request)
     {
-        return new Response('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.');
+        $url = $request->request->get('url');
+
+        $content = $this->get('sad_extract.service')->getArticle($url);
+
+        if ($content === null) {
+            $content = 'Negalime išimti straipsnio iš pateiktos nuorodos.';
+        }
+
+        return new Response($content);
+    }
+
+    public function recentAction()
+    {
+        /** @var EntityRepository $repo */
+        $repo = $this->get('doctrine.orm.default_entity_manager')->getRepository('SayAndDoTaskBundle:Task');
+
+        return $this->render(
+            'SayAndDoTaskBundle:Default:recent.html.twig',
+            array(
+                'recent_tasks' => $repo->findBy(
+                    array('status' => TaskStatus::STATUS_CONFIRMED),
+                    array('id' => 'desc'),
+                    4
+                )
+            )
+        );
     }
 
 }

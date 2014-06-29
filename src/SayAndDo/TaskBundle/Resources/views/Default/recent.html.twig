@@ -1,0 +1,5 @@
+<ul class="categories">
+    {% for recent_task in recent_tasks %}
+        <li><a href="{{ path('say_and_do_profile_details', {'id': recent_task.profile.id }) }}">{{ recent_task.title }}</a></li>
+    {% endfor %}
+</ul>

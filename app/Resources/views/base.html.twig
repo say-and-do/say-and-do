@@ -103,11 +103,11 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <!-- search -->
-                <div class="search-bar">
+                <div class="search-bar hidden" >
                     <form action="" method="get">
                         <fieldset>
                             <input type="image" src="{{ asset('images/pixel.gif') }}" class="searchsubmit" alt=""/>
-                            <input type="text" class="search_text showtextback" name="s" id="s" value="Search..."/>
+                            <input type="text" class="search_text showtextback" name="s" id="s" value="Paieška"/>
                         </fieldset>
                     </form>
                 </div>
@@ -131,22 +131,10 @@
             </div>
             <!-- end widget -->
             <div class="widget col-lg-3 col-md-3 col-sm-12">
-                <h4 class="title">Recent Posts</h4>
-                <ul class="recent_posts">
-                    <li>
-                        <a href="home1.html#">
-                            <img src="{{ asset('demos/recent_post_01.png') }}" alt=""/>Our New Dashboard Is Here
-                        </a>
-                        <a class="readmore" href="#">read more</a>
-                    </li>
-                    <li>
-                        <a href="home1.html#">
-                            <img src="{{ asset('demos/recent_post_02.png') }}" alt=""/>Design Is In The Air
-                        </a>
-                        <a class="readmore" href="#">read more</a>
-                    </li>
-                </ul>
-                <!-- recent posts -->
+                <h4 class="title">Naujausi pažadai</h4>
+                <div id="footer-tasks-list">
+
+                </div>
             </div>
             <!-- end widget -->
             <div class="widget col-lg-3 col-md-3 col-sm-12">
@@ -161,17 +149,10 @@
             </div>
             <!-- end widget -->
             <div class="widget col-lg-3 col-md-3 col-sm-12">
-                <h4 class="title">Flickr Stream</h4>
-                <ul class="flickr">
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_01.jpg') }}"></a></li>
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_02.jpg') }}"></a></li>
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_03.jpg') }}"></a></li>
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_04.jpg') }}"></a></li>
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_05.jpg') }}"></a></li>
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_06.jpg') }}"></a></li>
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_07.jpg') }}"></a></li>
-                    <li><a href="#"><img alt="" src="{{ asset('demos/flickr_08.jpg') }}"></a></li>
-                </ul>
+                <h4 class="title">Naujausi profiliai</h4>
+                <div id="footer-profiles-list">
+
+                </div>
             </div>
             <!-- end widget -->
         </div>
@@ -187,11 +168,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 columns text-right">
                     <div class="footer-menu right">
                         <ul class="menu">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">Site Terms</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ path('say_and_do_profile_homepage') }}">Pagrindinis</a></li>
+                            <li><a href="{{ path('say_and_do_profile_profiles') }}">Profiliai</a></li>
                         </ul>
                     </div>
                 </div>
@@ -226,6 +204,27 @@
     <script src="{{ asset('js/gritter/js/jquery.gritter.js') }}"></script>
     <script src="{{ asset('js/gritter/gritter-conf.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url:    "/profiles/newest",
+                type:   "GET",
+                data:   {},
+                success: function (result) {
+                    $("#footer-profiles-list").html(result);
+                }
+            });
+
+            $.ajax({
+                url:    "/task/recent",
+                type:   "GET",
+                data:   {},
+                success: function (result) {
+                    $("#footer-tasks-list").html(result);
+                }
+            });
+        });
+    </script>
 {% endblock %}
 </body>
 </html>
