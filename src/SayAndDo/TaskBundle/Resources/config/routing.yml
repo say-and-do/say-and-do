@@ -10,3 +10,9 @@ sad_task.extract:
     path:     /extract/
     defaults: { _controller: SayAndDoTaskBundle:Default:extract }
     methods:   [POST]
+
+say_and_do_task_recent:
+    path:     /recent/
+    defaults:
+        _controller: SayAndDoTaskBundle:Default:recent
+    methods: [GET]

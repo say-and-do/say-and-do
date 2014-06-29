@@ -2,6 +2,7 @@
 
 namespace SayAndDo\TaskBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use SayAndDo\PromiseBundle\Entity\Promise;
 use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
 use SayAndDo\TaskBundle\Entity\Task;
@@ -66,6 +67,23 @@ class DefaultController extends Controller
         }
 
         return new Response($content);
+    }
+
+    public function recentAction()
+    {
+        /** @var EntityRepository $repo */
+        $repo = $this->get('doctrine.orm.default_entity_manager')->getRepository('SayAndDoTaskBundle:Task');
+
+        return $this->render(
+            'SayAndDoTaskBundle:Default:recent.html.twig',
+            array(
+                'recent_tasks' => $repo->findBy(
+                    array('status' => TaskStatus::STATUS_CONFIRMED),
+                    array('id' => 'desc'),
+                    4
+                )
+            )
+        );
     }
 
 }
