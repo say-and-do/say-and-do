@@ -131,22 +131,10 @@
             </div>
             <!-- end widget -->
             <div class="widget col-lg-3 col-md-3 col-sm-12">
-                <h4 class="title">Recent Posts</h4>
-                <ul class="recent_posts">
-                    <li>
-                        <a href="home1.html#">
-                            <img src="{{ asset('demos/recent_post_01.png') }}" alt=""/>Our New Dashboard Is Here
-                        </a>
-                        <a class="readmore" href="#">read more</a>
-                    </li>
-                    <li>
-                        <a href="home1.html#">
-                            <img src="{{ asset('demos/recent_post_02.png') }}" alt=""/>Design Is In The Air
-                        </a>
-                        <a class="readmore" href="#">read more</a>
-                    </li>
-                </ul>
-                <!-- recent posts -->
+                <h4 class="title">Naujausi pažadai</h4>
+                <div id="footer-tasks-list">
+
+                </div>
             </div>
             <!-- end widget -->
             <div class="widget col-lg-3 col-md-3 col-sm-12">
@@ -224,6 +212,15 @@
                 data:   {},
                 success: function (result) {
                     $("#footer-profiles-list").html(result);
+                }
+            });
+
+            $.ajax({
+                url:    "/task/recent",
+                type:   "GET",
+                data:   {},
+                success: function (result) {
+                    $("#footer-tasks-list").html(result);
                 }
             });
         });

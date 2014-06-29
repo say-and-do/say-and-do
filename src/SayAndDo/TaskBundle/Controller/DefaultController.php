@@ -2,6 +2,7 @@
 
 namespace SayAndDo\TaskBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use SayAndDo\PromiseBundle\Entity\Promise;
 use SayAndDo\TaskBundle\DependencyInjection\TaskStatus;
 use SayAndDo\TaskBundle\Entity\Task;
@@ -59,6 +60,23 @@ class DefaultController extends Controller
     public function extractAction()
     {
         return new Response('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.');
+    }
+
+    public function recentAction()
+    {
+        /** @var EntityRepository $repo */
+        $repo = $this->get('doctrine.orm.default_entity_manager')->getRepository('SayAndDoTaskBundle:Task');
+
+        return $this->render(
+            'SayAndDoTaskBundle:Default:recent.html.twig',
+            array(
+                'recent_tasks' => $repo->findBy(
+                    array('status' => TaskStatus::STATUS_CONFIRMED),
+                    array('id' => 'desc'),
+                    4
+                )
+            )
+        );
     }
 
 }
