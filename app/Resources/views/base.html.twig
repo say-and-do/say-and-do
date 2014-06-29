@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}MaxFront | Bootstrap Front-End{% endblock %}</title>
+    <title>{% block title %}Tvirtas Žodis{% endblock %}</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.ico">
 
     {% block stylesheets %}
         <!-- Google Fonts -->
@@ -179,7 +178,8 @@
 
 {% block javascripts %}
     <!-- Main Scripts-->
-    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.unveilEffects.js') }}"></script>
     <script src="{{ asset('js/retina-1.1.0.js') }}"></script>
@@ -198,34 +198,28 @@
     <script src="{{ asset('js/annotator-full.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $.ajax({
-                url:    "/profiles/newest",
-                type:   "GET",
-                data:   {},
-                success: function (result) {
-                    $("#footer-profiles-list").html(result);
-                }
-            });
+        $.ajax({
+            url:    "/profiles/newest",
+            type:   "GET",
+            data:   {},
+            success: function (result) {
+                $("#footer-profiles-list").html(result);
+            }
+        });
 
-            $.ajax({
-                url:    "/task/recent",
-                type:   "GET",
-                data:   {},
-                success: function (result) {
-                    $("#footer-tasks-list").html(result);
-                }
-            });
-
-
+        $.ajax({
+            url:    "/task/recent",
+            type:   "GET",
+            data:   {},
+            success: function (result) {
+                $("#footer-tasks-list").html(result);
+            }
         });
     </script>
 
 
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="http://assets.annotateit.org/annotator/v1.1.0/annotator-full.min.js"></script>
-    <script type="application/javascript">
+    <script type="text/javascript">
         var $ = jQuery.noConflict();
 
 

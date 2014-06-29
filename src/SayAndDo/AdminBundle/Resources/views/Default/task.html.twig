@@ -1,0 +1,78 @@
+{% extends '::admin.html.twig' %}
+
+{% block inner_content %}
+    {% if task.profile %}
+        {% set total_tasks = (tasks_confirmed|length + tasks_in_progress|length + tasks_done|length) %}
+
+        {% if total_tasks <= 0 %}
+            {% set total_tasks = 1 %}
+        {% endif %}
+        <div class="row mt">
+            <div class="col-lg-12">
+                <div class="row content-panel">
+                    <div class="col-md-4 profile-text mt mb centered">
+                        <div class="right-divider hidden-sm hidden-xs">
+                            <h4>{{ tasks_confirmed|length }}</h4>
+                            <h6>DARBAI</h6>
+                            <h4>{{ tasks_in_progress|length }}</h4>
+                            <h6>VYKDOMA</h6>
+                            <h4>{{ tasks_done|length }}</h4>
+                            <h6>BAIGTA</h6>
+                        </div>
+                    </div><! --/col-md-4 -->
+
+                    <div class="col-md-4 profile-text">
+                        <h3>{{ task.profile.getTitle() }} <small>{{ task.profile.getPosition() }}</small></h3>
+                        <h6>{{ task.profile.getPoliticalParty() }}</h6>
+                        <p>{{ task.profile.getDescription }}</p>
+                        <h3>{{ profile_rating }}</h3>
+                        <h6>Indeksas</h6>
+                    </div><! --/col-md-4 -->
+
+                    <div class="col-md-4 centered">
+                        <div class="profile-pic">
+                            <p><img src="{{ asset('profiles/profile_'~task.profile.getId()~'.png') }}" class="img-circle"></p>
+                        </div>
+                    </div><! --/col-md-4 -->
+                </div><!-- /row -->
+            </div><! --/col-lg-12 -->
+        </div><! --/row -->
+    {% endif %}
+    <div class="col-lg-12 mt">
+        <div class="row content-panel">
+            <div class="col-lg-8 col-lg-offset-2 detailed mt">
+                <h4 class="mb">Pažado informacija</h4>
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"> Antraštė</label>
+                        <div class="col-lg-6">
+                            {{ task.getTitle() }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label"> Tekstas</label>
+                        <div class="col-lg-6">
+                            {{ task.getDescription() }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Nuoroda</label>
+                        <div class="col-lg-6">
+                            {% if task.promise %}
+                                {{ tast.promise.getUrl() }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <a class="btn btn-theme" href="{{ path("say_and_do_admin_tasks_confirm", {'id' : task.id}) }}">Patvirtinti</a>
+                            <a class="btn btn-theme04" href="{{ path("say_and_do_admin_tasks_delete", {'id' : task.id}) }}">Panaikinti</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

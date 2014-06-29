@@ -45,14 +45,12 @@ class DefaultController extends Controller
                 $repo = $em->getRepository('SayAndDoProfileBundle:Profile');
 
                 /** @var Profile $profile */
-                $profile = $repo->findOneBy(['title' => $formParams['title']]);
+                $profile = $repo->findOneBy(['title' => $request->request->get('profile')]);
 
-                if ($profile) {
-                    $task->setProfile($profile);
-                } else {
+                if (!$profile) {
                     $profile = new Profile();
 
-                    $profile->setTitle($formParams['title']);
+                    $profile->setTitle($request->request->get('profile'));
                     $profile->setPoints(50);
                     $profile->setDescription('');
                     $profile->setPosition('');
@@ -62,7 +60,10 @@ class DefaultController extends Controller
                     $em->flush();
                 }
 
+                $task->setProfile($profile);
+
                 $task->setPromise($promise);
+                $promise->setTask($task);
 
                 $this->get('sd_task.service')->store($task);
                 $this->redirect($this->generateUrl('say_and_do_task_success'));
