@@ -155,7 +155,11 @@
 	.dmtop {
 		background-color:#c0392b;
 	}
-	
+
+    .intro-action {
+        background-color:#eea236;
+    }
+
 	.services_lists_boxes_icon_none i:hover,
 	.services_lists_boxes_icon i:hover {
 		background:#c0392b !important;
