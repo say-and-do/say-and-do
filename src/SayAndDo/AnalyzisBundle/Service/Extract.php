@@ -12,12 +12,20 @@ class Extract
 
     public function getArticle($url)
     {
+        $url = array($url);
+        $websiteParts = $this->extractUrls($url);
+        return $websiteParts[0]->content;
+    }
 
-        if (!is_array($url)) {
-            $url = array($url);
-        }
 
-        // Call with pro (you'll need a real key)
+    /**
+     * Extract website parts
+     * @param array $urls
+     *
+     * @return object
+     */
+    public function extractUrls(array $urls)
+    {
         $pro = new Embedly(
             array(
                 'key' => '76585d936d62445aaa604e7256e82c1d',
@@ -25,19 +33,18 @@ class Extract
             )
         );
 
-        $objs = $pro->extract(
+        return $pro->extract(
             array(
-                'urls' => $url
+                'urls' => $urls
             )
         );
-
-        return $objs[0]->content;
     }
 
-    public function  getEmbedlyParts()
+    /**
+     * Demo method
+     */
+    private function exampleEmbedly()
     {
-
-        // require_once('src/Embedly/Embedly.php');  // if using source
         $api = new Embedly(array('user_agent' => 'Mozilla/5.0 (compatible; mytestapp/1.0)'));
 
         // Single url
@@ -45,12 +52,14 @@ class Extract
         print_r($objs);
 
         // Multiple urls
-        $obj = $api->oembed(array(
+        $obj = $api->oembed(
+            array(
                 'urls' => array(
                     'http://www.youtube.com/watch?v=sPbJ4Z5D-n4&feature=topvideos',
                     'http://twitpic.com/3yr7hk'
                 )
-            ));
+            )
+        );
         print_r($obj);
     }
 
